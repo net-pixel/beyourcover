@@ -1,3 +1,29 @@
-// Place all the styles related to the products controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+/* cover写真 */
+
+.container-fluid{
+	max-width: 100%;
+}
+
+.container-fluid .cover-img{
+	position: relative;
+}
+
+.container-fluid .cover-img p{
+	position: absolute;
+	font-family: var(--M-PLUS-1-p);
+	top: 40%;
+	left: 50%;
+	font-size: 3.7vw;
+	-ms-transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	width: 100%;
+	color: #fff;
+}
+
+.container-fluid .cover-img img{
+	width: 100%;
+}
