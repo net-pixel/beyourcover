@@ -13,3 +13,50 @@
  *= require_tree .
  *= require_self
  */
+
+ //import fonts from google font
+@import url('https://fonts.googleapis.com/css?family=Arvo|M+PLUS+1p|Noto+Serif+JP|Solway&display=swap');
+
+ //custom
+@import "navbar";
+@import "reset";
+
+//Base
+:root{
+  --light-gray: #2b3032a1;
+  --border:#2b303218;
+  --text-color:#ff686b;
+  --primary-color:#1a2224;
+  --solway: "Solway", serif;
+  --Arvo: "Arvo", serif;
+--Noto-Serif-JP: "Noto Serif JP", serif;
+--M-PLUS-1-p: "M PLUS 1p", sans-serif;
+}
+.primary-color{
+  color: var(--primary-color);
+}
+.bg-primary-color{
+background-color: var(--primary-color)!important;
+}
+.text-color{
+  color: var(--text-color);
+}
+.font-solway{
+  font-family: var(--solway)
+}
+.lightblue{
+  color:lightblue;
+}
+
+.japanese{
+font-family: var(--M-PLUS-1-p);
+}
+
+footer {
+  .footer-bottom {
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+}
