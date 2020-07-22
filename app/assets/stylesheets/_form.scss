@@ -1,0 +1,158 @@
+.user-form {
+  padding: 130px;
+  margin: auto;
+  &__field {
+    max-width: 400px;
+    margin: auto;
+    &__title {
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+    &__actions {
+      margin-top: 30px;
+      max-width: 400px;
+      height: calc(1.5em + 0.75rem + 2px);
+      background-color: gray;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+    }
+    &__create {
+      margin-top: 30px;
+      max-width: 100%;
+      height: calc(1.5em + 0.75rem + 2px);
+      border-radius: 0.25rem;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      &__button {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  &__article {
+    max-width: 100%;
+    margin: auto;
+  }
+}
+
+/*button*/
+a.btn-default.btn-sns {
+  text-decoration: none;
+  color: rgb(184, 184, 184);
+  &:hover {
+    color: #fff;
+  }
+  &.btn-sns-google {
+    color: black;
+    &:hover {
+      color: #fff;
+    }
+  }
+  &.btn-sns-facebook {
+    color: #fff;
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+.btn-sns {
+  margin-bottom: 15px;
+  border-color: black;
+  color: #fff;
+  background-color: rgb(62, 62, 63);
+}
+
+.btn-default {
+  border-radius: 4px;
+  display: block;
+  line-height: 48px;
+  font-size: 14px;
+  width: 100%;
+  border: 1px solid;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  &:hover {
+    background-color: gray;
+  }
+
+  &:active {
+    background-color: rgb(216, 216, 216);
+  }
+}
+
+.btn-sns-google {
+  background-color: #fff;
+  position: relative;
+  border: #979797 solid 1px;
+  color: #333;
+}
+
+.btn-sns-facebook {
+  background-color: #385185;
+  border: #385185 solid 1px;
+}
+
+a {
+  color: rgb(187, 207, 220);
+}
+
+.fab {
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  font-size: 1.5em;
+}
+
+.btn {
+  background-color: black;
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+
+  &:hover {
+    background-color: gray;
+  }
+
+  &:active {
+    background-color: rgb(216, 216, 216);
+  }
+}
+
+
+input.btn {
+  color: white;
+}
+
+.trix-content h1 {
+  border-bottom: 1px solid #ccc;
+  font-size: 1.6em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.trix-content {
+  font-size: 16px;
+  line-height: 26px;
+  color: #111111;
+  min-height: 15em;
+  }
+
+@media screen and (max-width:760px){
+  .user-form{
+    padding: 100px 30px 30px 30px;
+  }
+}
+
+#children_box{
+  display: none;
+}
+#grandchildren_box{
+  display: none;
+}
