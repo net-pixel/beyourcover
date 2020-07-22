@@ -7,11 +7,11 @@
       <%= link_to new_user_path, class: "btn-default btn-sns" do %>
        メールアドレスで登録する
       <% end %>
-      <%= link_to "#", class: "btn-default btn-sns btn-sns-google", id: "google-login" , method: :post do %>
+      <%= link_to new_user_path, class: "btn-default btn-sns btn-sns-google", id: "google-login" , method: :post do %>
         <i class="fab fa-google"></i>
         Googleで登録する
       <% end %>
-      <%= link_to "#", class: "btn-default btn-sns btn-sns-facebook", id: "facebook-login" , method: :post do %>
+      <%= link_to new_user_path, class: "btn-default btn-sns btn-sns-facebook", id: "facebook-login" , method: :post do %>
        <i class="fab fa-facebook"></i>
        Facebookで登録する
       <% end %>

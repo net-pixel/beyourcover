@@ -7,16 +7,30 @@
 
     <div class="user-form__field">
       <h2>Sign up</h2>
-        <%= f.input :email,
-                    required: true,
+        <%= f.input :name,
+                    label: "ニックネーム",
                     autofocus: true,
+                    # error: "ニックネームを入力してください",
+                    # required: true,
+                    input_html: { autocomplete: "email" }%>
+        <%= f.input :email,
+                    label: "メールアドレス",
+                    autofocus: true,
+                    placeholder: "PCアドレス",
+                    # error: "メールアドレスを入力してください",
+                    # required: true,
                     input_html: { autocomplete: "email" }%>
         <%= f.input :password,
-                    required: true,
+                    label: "パスワード",
+                    placeholder: "７文字以上の半角英数字",
+                    # error: "を入力してください",
+                    # required: true,
                     hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :password_confirmation,
-                    required: true,
+                    # required: true,
+                    placeholder: "７文字以上の半角英数字",
+                    label: "パスワード確認",
                     input_html: { autocomplete: "new-password" } %>
         <div class="user-form__field__actions">
           <%= f.button :submit, "Sign up" %>
