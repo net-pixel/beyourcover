@@ -11,9 +11,19 @@ User.create!(
   email: "abc@example.com",
   password: 'password',
   password_confirmation: "password",
-  first_name: "鈴木",
-  last_name: "太郎",
-  first_kana: "スズキ",
-  last_kana: "タロウ",
+  last_name: "鈴木",
+  first_name: "太郎",
+  last_kana: "スズキ",
+  first_kana: "タロウ",
   admin: true
 )
+Address.create!(
+  post_code: "001-0000",
+  prefecture: "東京都",
+  city: '渋谷区',
+  address: "道玄坂2-3-1",
+  building: "フォンティスビル7F",
+  phone_number: "09066666666",
+  user_id: 1,
+)
+
