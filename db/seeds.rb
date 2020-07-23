@@ -27,3 +27,40 @@ Address.create!(
   user_id: 1,
 )
 
+categories=[
+  {level1:"iPhone11",level1_children:[
+                                      {level2:"a",level2_children:["1","2"]},
+                                      {level2:"b",level2_children:["1","2"]},
+                                      {level2:"c",level2_children:["1","2"]}
+                                      ]
+  },
+  {level1:"iPhone11 Pro",level1_children:[
+                                      {level2:"a",level2_children:["1","2","3"]},
+                                      {level2:"b",level2_children:["1","2","3"]}
+                                      ]
+  },
+  {level1:"iPhone11 Pro Max",level1_children:[
+                                      {level2:"a",level2_children:["1","2"]},
+                                      {level2:"b",level2_children:["1","2"]}
+                                      ]
+  },
+  {level1:"AirPods",level1_children:[
+                                      {level2:"a",level2_children:["1","2","3"]},
+                                      {level2:"b",level2_children:["1","2","3"]},
+                                      {level2:"c",level2_children:["1","2","3"]}
+                                      ]
+  }
+]
+categories.each.with_index(1) do |category,i|
+  level1_var="@category#{i}"
+  level1_val= Category.create(name:"#{category[:level1]}")
+  eval("#{level1_var} = level1_val")
+    category[:level1_children].each.with_index(1) do |level1_child,j|
+      level2_var="#{level1_var}_#{j}"
+      level2_val= eval("#{level1_var}.children.create(name:level1_child[:level2])")
+      eval("#{level2_var} = level2_val")
+        level1_child[:level2_children].each do |level2_children_val|
+          eval("#{level2_var}.children.create(name:level2_children_val)")
+        end
+    end
+end
