@@ -37,11 +37,9 @@
         = f.submit "ログイン", class: 'btn-default btn-sns'
         .user-form__field__box__group
           .user-form__field__box__group__head
-        = link_to "#", method: :post do
-          %button#google-login.btn-default.btn-sns.btn-sns-google
-            %i.fab.fa-google
-            Googleでログインする
-        = link_to "#", method: :post do
-          %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
-            %i.fab.fa-facebook
-            Facebookでログインする
+      = link_to "#", class: "btn-default btn-sns btn-sns-google", id: "google-login" , method: :post do
+        %i.fab.fa-google
+        Googleで登録する
+      = link_to "#", class: "btn-default btn-sns btn-sns-facebook", id: "facebook-login" , method: :post do
+        %i.fab.fa-facebook
+        Facebookで登録する
