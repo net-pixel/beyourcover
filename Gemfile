@@ -58,4 +58,5 @@ gem 'devise'
 gem "haml-rails"
 gem 'rails-i18n'
 gem 'pry-rails'
+gem 'ancestry'
 # CustomGem End
