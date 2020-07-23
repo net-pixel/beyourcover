@@ -1,0 +1,84 @@
+= render 'layouts/navbar'
+.space
+= form_for(@address, url: addresses_path, html: {method: 'POST'}) do |f|
+  .user-form
+    .user-form__head
+      %li.user-form__head__progress.progress-active.progress-active__bar
+        会員情報
+      %li.user-form__head__progress.progress-active
+        住所・電話番号
+      %li.user-form__head__progress__done
+        完了
+    .user-form__field
+      %h2.body_head 住所・電話番号入力
+      - if @address.errors.any?
+        %span.err_message
+          = I18n.t("errors.messages.not_saved")
+      .user-form__field__box
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              郵便番号
+            %span.mandatory
+              必須
+            %br
+            - if @address.errors.any?
+              %span.err_message
+                =  @address.errors.full_messages_for(:post_code).shift
+            = f.text_field :post_code, class: "user-form__field__box__group__form", placeholder: "例)123-4567", maxlength: '8'
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              都道府県
+            %span.mandatory
+              必須
+            %br
+            - if @address.errors.any?
+              %span.err_message
+                =  @address.errors.full_messages_for(:prefecture).shift
+            = f.text_field :prefecture, class: "user-form__field__box__group__form", placeholder: "都道府県を入力ください"
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              市区町村
+            %span.mandatory
+              必須
+            %br
+            - if @address.errors.any?
+              %span.err_message
+                =  @address.errors.full_messages_for(:city).shift
+            = f.text_field :city, class: "user-form__field__box__group__form", placeholder: "市区町村を入力ください"
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              番地
+            %span.mandatory
+              必須
+            %br
+            - if @address.errors.any?
+              %span.err_message
+                =  @address.errors.full_messages_for(:address).shift
+            = f.text_field :address, class: "user-form__field__box__group__form", placeholder: "番地を入力ください"
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              建物名
+            = f.text_field :building, class: "user-form__field__box__group__form", placeholder: "建物名を入力ください"
+      .user-form__field__box
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              電話番号
+            %span.mandatory
+              必須
+            %br
+            - if @address.errors.any?
+              %span.err_message
+                =  @address.errors.full_messages_for(:phone_number).shift
+            = f.text_field :phone_number, class: "user-form__field__box__group__form", placeholder: "ハイフンなし10~11桁"
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %a
+              ※本人情報は正しく入力してください。
+              会員登録後、修正するにはお時間を頂く場合があります。
+        = f.submit "次へ進む", class: 'btn-default btn-sns'

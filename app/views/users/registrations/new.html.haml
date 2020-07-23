@@ -1,0 +1,13 @@
+= render 'layouts/navbar'
+.space
+.user-form
+  .user-form__field
+    .user-form__field__email
+      = link_to new_user_path, class: "btn-default btn-sns" do
+        メールアドレスで登録する
+      = link_to new_user_path, class: "btn-default btn-sns btn-sns-google", id: "google-login" , method: :post do
+        %i.fab.fa-google
+        Googleで登録する
+      = link_to new_user_path, class: "btn-default btn-sns btn-sns-facebook", id: "facebook-login" , method: :post do
+        %i.fab.fa-facebook
+        Facebookで登録する

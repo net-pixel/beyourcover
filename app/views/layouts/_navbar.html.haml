@@ -1,0 +1,38 @@
+%body
+  %header
+    .container-fluid
+      .row
+        .site-title
+          = link_to "BeYourCover", root_path, class: 'home'
+        .site-nav
+          #search.search-head-btn
+            = link_to "#", class: "search" do
+              %i.fas.fa-search
+          #menu-bar
+            #menu.menu
+              #bar1.bar
+              #bar2.bar
+              #bar3.bar
+            %div
+              %ul#nav.nav.nav-sm
+                .mainnav
+                  %li= link_to "home", root_path, class: 'select'
+                  %li= link_to "about", "#", class: 'select'
+                  - if current_user
+                    %li
+                      %a#subnav.select.drop
+                        = current_user.name
+                        %i.fas.fa-caret-down
+                    .subnav
+                      %li
+                        .dds
+                          - if current_user.admin
+                            %a.dds__select{:href => "#"} New Post
+                          %a.dds__select{:href => edit_user_registration_path} Account Settings
+                          = link_to "Logout", destroy_user_session_path, class:'dds__select', method: :delete
+                  - else
+                    %li.nav-item
+                      = link_to "Signup", new_user_registration_path, class:'select'
+                    %li.nav-item
+                      = link_to "Signin", new_user_session_path, class:'select'
+        #menu-bg.menu-bg

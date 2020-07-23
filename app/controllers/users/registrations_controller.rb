@@ -19,6 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       session["devise.regist_data"] = { user: @user.attributes }
       session["devise.regist_data"][:user]["password"] = params[:user][:password]
       render :new_address
+      return
     else
       render :new_user
     end
@@ -38,8 +39,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @address.save
       session["devise.regist_data"]["user"].clear
       sign_in(:user, @user)
+      redirect_to root_path
     else
       render :new_address
+      return
     end
   end
 
@@ -50,11 +53,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :first_name, :last_name, :first_kana, :last_kana ])
   end
 
-  # def sign_up_params　/デフォルト記載
-  #   params.require(:user).permit(:name, :email, :first_name,:last_name, :first_kana, :last_kana, :birthday)
+  # def sign_up_params
+  #   params.require(:user).permit(:name, :email, :password, :first_name,:last_name, :first_kana, :last_kana)
   # end
 
   def address_params
-    params.require(:address).permit(:post_code, :prefecture, :city, :address, :building, :phone_number)
+    params.require(:address).permit(:post_code, :prefecture, :city, :address, :building, :phone_number )
   end
 end

@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_07_20_143250) do
     t.string "city", null: false
     t.string "address", null: false
     t.string "building"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -70,17 +70,13 @@ ActiveRecord::Schema.define(version: 2020_07_20_143250) do
     t.string "name", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "first_name", null: false
     t.string "last_name", null: false
-    t.string "first_kana", null: false
+    t.string "first_name", null: false
     t.string "last_kana", null: false
+    t.string "first_kana", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "admin", default: false

@@ -1,0 +1,14 @@
+  = render 'layouts/navbar'
+.space
+  .user-form
+    .user-form__head
+      %li.user-form__head__progress.progress-active.progress-active__bar
+        会員情報
+      %li.user-form__head__progress.progress-active.progress-active__bar
+        住所・電話番号
+      %li.user-form__head__progress__done.progress-active
+        完了
+    .user-form__field
+      %h2 完了
+      ..user-form__field__box
+        = link_to 'トップページへ戻る', root_path, class: 'btn-default btn-sns'
