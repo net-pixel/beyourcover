@@ -74,6 +74,32 @@
     .head {
       border-bottom: 1px solid rgb(237, 237, 237);
     }
+    &__category {
+      &__box {
+        margin-bottom: 5px;
+        &__parent {
+          width: 100%;
+          height: 48px;
+          margin-bottom: 10px;
+          border: 1px solid;
+          border-radius: 4px;
+        }
+        &__children {
+          width: 100%;
+          height: 48px;
+          margin-bottom: 10px;
+          border: 1px solid;
+          border-radius: 4px;
+        }
+        &__grandchildren {
+          width: 100%;
+          height: 48px;
+          margin-bottom: 10px;
+          border: 1px solid;
+          border-radius: 4px;
+        }
+      }
+    }
     &__box {
       position: relative;
 
@@ -121,13 +147,30 @@
         width: 400px;
         height: 70px;
         display: flex;
-        justify-content: space-between;
       }
 
       .nmform {
         width: 180px;
         height: 48px;
         border-radius: 4px;
+        border: 1px solid;
+      }
+      .pricetitle {
+        width: 100%;
+        height: 48px;
+        line-height: 48px;
+      }
+      .pricebox {
+        width: 400px;
+        height: 70px;
+        display: flex;
+        justify-content: flex-end;
+      }
+      .priceTag {
+        width: 10px;
+        margin-right: 10px;
+        height: 48px;
+        line-height: 48px;
       }
     }
   }

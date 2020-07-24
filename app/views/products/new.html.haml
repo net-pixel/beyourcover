@@ -1,6 +1,6 @@
 = render 'layouts/navbar'
 .space
-= form_for(@product, url: new_product_path, html: {method: 'POST'}) do |f|
+= form_with model: @product do |f|
   .user-form
     .user-form__field
       %h2.body_head 商品情報入力
@@ -21,7 +21,7 @@
             = f.text_field :name, id: :count_name, class: "user-form__field__box__group__form", placeholder: "40文字まで", maxlength: "40"
             .count_box
               %span.up_count 0
-              \/ 1000文字
+              \/ 40文字
         .user-form__field__box__group
           .user-form__field__box__group__head
             %label
@@ -37,102 +37,87 @@
               %span.up_counter 0
               \/ 1000文字
 
-          .user-form__field__box__group
-            .user-form__field__box__group__head
-              %label
-                カテゴリー
-              %span.mandatory
-                必須
-              %br
-          #category_box.user-form__field__category
-            #partent_box.pulldown.user-form__field__category__box
-              = f.select :category_id, options_for_select( @category_parent_array.pluck(:name, :id)),{include_blank: "選択してください"}, { class: "user-form__field__category__box__parent", id: "parent_category"}
-            #children_box.pulldown.user-form__field__category__box__children
-            #grandchildren_box.pulldown.user-form__field__category__box__grandchildren
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              カテゴリー
+            %span.mandatory
+              必須
+            %br
+        #category_box.user-form__field__category
+          #partent_box.pulldown.user-form__field__category__box
+            = f.select :category_id, options_for_select( @category_parent_array.pluck(:name, :id)),{include_blank: "選択してください"}, { class: "user-form__field__category__box__parent", id: "parent_category"}
+          #children_box.pulldown.user-form__field__category__box__children
+          #grandchildren_box.pulldown.user-form__field__category__box__grandchildren
 
 
-          .user-form__field__box__group
-            .user-form__field__box__group__head
-              %label
-                ブランド名
-              %span.mandatory
-                必須
-              %br
-              - if @product.errors.any?
-                %span.err_message
-                  =  @product.errors.full_messages_for(:brand).shift
-              = f.text_field :brand, id: :count_name, class: "user-form__field__box__group__form", placeholder: "40文字まで", maxlength: "40"
-          .user-form__field__box__group
-            .user-form__field__box__group__head
-              %label
-                配送料の負担
-              %span.mandatory
-                必須
-              %br
-              - if @product.errors.any?
-                %span.err_message
-                  =  @product.errors.full_messages_for(:postage).shift
-              = f.select :postage, [["送料込み(出品者負担)", "出品者負担"], ["着払い(購入者負担)", "購入者負担"]], include_blank: "選択して下さい", class: "user-form__field__box__group__form"
-          .user-form__field__box__group
-            .user-form__field__box__group__head
-              %label
-                発送元の地域
-              %span.mandatory
-                必須
-              %br
-              - if @product.errors.any?
-                %span.err_message
-                  =  @product.errors.full_messages_for(:prefecture_id).shift
-              = f.collection_select(:prefecture_id, Prefecture.all, :id, :name,{include_blank: "選択して下さい"}, {class: "user-form__field__box__group__form"} )
-          .user-form__field__box__group
-            .user-form__field__box__group__head
-              %label
-                発送までの日数
-              %span.mandatory
-                必須
-              %br
-              - if @product.errors.any?
-                %span.err_message
-                  =  @product.errors.full_messages_for(:shipping_day).shift
-              = f.select :shipping_day, [["1〜2日で発送", "1〜2日で発送"], ["2〜3日で発送", "2〜3日で発送"], ["4〜7日で発送", "4〜7日で発送"]], include_blank: "選択して下さい", class: "user-form__field__box__group__form"
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              ブランド名
+            %span
+              任意
+            %br
+            - if @product.errors.any?
+              %span.err_message
+                =  @product.errors.full_messages_for(:brand).shift
+            = f.text_field :brand, id: :count_name, class: "user-form__field__box__group__form", placeholder: "40文字まで", maxlength: "40"
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              配送料の負担
+            %span.mandatory
+              必須
+            %br
+            - if @product.errors.any?
+              %span.err_message
+                =  @product.errors.full_messages_for(:postage).shift
+            = f.select :postage, [["送料込み(出品者負担)", "出品者負担"], ["着払い(購入者負担)", "購入者負担"]], {}, class: "user-form__field__box__group__form", include_blank: "選択して下さい"
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              発送元の地域
+            %span.mandatory
+              必須
+            %br
+            - if @product.errors.any?
+              %span.err_message
+                =  @product.errors.full_messages_for(:prefecture_id).shift
+            = f.collection_select(:prefecture_id, Prefecture.all, :id, :name,{include_blank: "選択して下さい"}, {class: "user-form__field__box__group__form"} )
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              発送までの日数
+            %span.mandatory
+              必須
+            %br
+            - if @product.errors.any?
+              %span.err_message
+                =  @product.errors.full_messages_for(:shipping_day).shift
+            = f.select :shipping_day, [["1〜2日で発送", "1〜2日で発送"], ["2〜3日で発送", "2〜3日で発送"], ["4〜7日で発送", "4〜7日で発送"]], {}, class: "user-form__field__box__group__form", include_blank: "選択して下さい"
 
 
-          #product-about
-            %p 価格 (¥100 〜 9,999,999)
-            #product-about__price
-              #product-about__price__label
-                %label
-                  販売価格
-                %span.magenta
-                  必須
-              %span
-              - if @product.errors.any?
-                %span.err_message
-                  =  @product.errors.full_messages_for(:price).shift
-                ￥
-              #product-about__price__box
-                = f.number_field :price, placeholder: "税込み価格(半角数字のみ)", min: "100", max: "9999999"
-          .form_button
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              販売価格
+            %span.mandatory
+              必須
+            - if @product.errors.any?
+              %span.err_message
+                =  @product.errors.full_messages_for(:price).shift
+            .namebox
+              .pricetitle
+                (¥100 〜 ¥9,999,999)
+              .pricebox
+                .priceTag
+                  ¥
+                = f.number_field :price, placeholder: "税込み価格(半角数字のみ)", min: "100", max: "9999999", class: "nmform"
             - if @product.id.nil?
-              .send-btn
-                = f.submit "出品する", title: "商品を出品する"
+              = f.submit "出品する", title: "商品を出品する", class: 'btn-default btn-sns'
             - elsif user_signed_in? && current_user.id == @product.user_id
-              .send-btn
-                = f.submit "更新する", title: "商品を更新する"
+              = f.submit "更新する", title: "商品を更新する", class: 'btn-default btn-sns'
               = link_to product_path(@product), method: :delete, data: { confirm: '削除しますか？' } do
                 %input#product_delete{type: "button", value: "この商品を削除", title: "商品を削除"}
-            .backpage
-              %input{onclick: "history.back()", type: "button", value: "前のページへ戻る"}
-            %p
-              %small
-                禁止されている
-                %a{href: '#'} 行為
-                および
-                %a{href: '#'} 出品物
-                を必ずご確認ください。
-                %a{href: '#'} 偽ブランド品
-                や
-                %a{href: '#'} 盗品物
-                などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして
-                %a{href: '#'} フリマ利用規約
-                に同意したことになります。
+          .backpage
+            %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'btn-default btn-sns'}

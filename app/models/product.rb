@@ -12,9 +12,9 @@ class Product < ApplicationRecord
 
   validates :name, presence: { message: "は必須です" }
   validates :detail, presence: { message: "は必須です" }
-  validates :price, presence: { message: "を入力してください" }
   validates :category_id, presence: { message: "を選択してください" }
   validates :postage, presence: { message: "を選択してください" }
   validates :prefecture_id, presence: { message: "を選択してください" }
   validates :shipping_day, presence: { message: "を選択してください" }
+  validates :price, presence: { message: "を入力してください" }
 end
