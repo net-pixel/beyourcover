@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2020_07_20_143250) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "post_code", null: false
-    t.string "prefecture", null: false
+    t.integer "prefecture_id", null: false
     t.string "city", null: false
     t.string "address", null: false
     t.string "building"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2020_07_20_143250) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["city"], name: "index_addresses_on_city"
-    t.index ["prefecture"], name: "index_addresses_on_prefecture"
+    t.index ["prefecture_id"], name: "index_addresses_on_prefecture_id"
   end
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

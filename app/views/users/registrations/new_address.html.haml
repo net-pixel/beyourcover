@@ -35,8 +35,9 @@
             %br
             - if @address.errors.any?
               %span.err_message
-                =  @address.errors.full_messages_for(:prefecture).shift
-            = f.text_field :prefecture, class: "user-form__field__box__group__form", placeholder: "都道府県を入力ください"
+                =  @address.errors.full_messages_for(:prefecture_id).shift
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: "user-form__field__box__group__form"}
+            -# = f.text_field :prefecture, class: "user-form__field__box__group__form", placeholder: "都道府県を入力ください"
         .user-form__field__box__group
           .user-form__field__box__group__head
             %label

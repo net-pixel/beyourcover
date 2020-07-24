@@ -94,6 +94,7 @@
           margin-bottom: 15px;
           position: relative;
           padding: 0 10px;
+          height: 48px;
         }
       }
 
@@ -105,52 +106,18 @@
       }
 
       .namebox {
-        width: 343px;
+        width: 400px;
         height: 70px;
         display: flex;
         justify-content: space-between;
       }
 
       .nmform {
-        width: 160px;
+        width: 180px;
         height: 48px;
         border-radius: 4px;
       }
-
-      .datebox {
-        width: 343px;
-        height: 70px;
-        display: flex;
-        justify-content: left;
-        align-items: center;
-
-        .year,
-        .month,
-        .day {
-          margin: 0px;
-          border-radius: 4px;
-          display: block;
-          height: 48px;
-          font-size: 14px;
-          width: 100%;
-          border: 1px solid;
-          margin-bottom: 15px;
-          position: relative;
-          width: 90px;
-          margin-left: 4px;
-        }
-
-        .field_with_errors {
-          width: 343px;
-          height: 70px;
-          display: flex;
-          justify-content: left;
-          align-items: center;
-        }
-      }
-
     }
-
   }
 }
 

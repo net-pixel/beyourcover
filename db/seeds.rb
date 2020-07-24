@@ -19,13 +19,28 @@ User.create!(
 )
 Address.create!(
   post_code: "001-0000",
-  prefecture: "東京都",
+  prefecture_id: 1,
   city: '渋谷区',
   address: "道玄坂2-3-1",
   building: "フォンティスビル7F",
   phone_number: "09066666666",
   user_id: 1,
 )
+
+# 10.times do |i|
+#   product = Product.new
+#   product.name = Faker::Number.between(from: 1, to: 2)
+#   product.detail = Faker::Lorem.paragraph_by_chars(number: 500)
+#   product.brand = Faker::Name.male_first_name
+#   product.price = Faker::Number.number(digits: 4)
+#   product.category = Category.order("RAND()").first
+#   product.postage = Faker::Number.number(digits: 3)
+#   product.user = User.first
+#   product.thumbnail.attach(io: URI.open("https://picsum.photos/1920/1080"), filename: "#{i}_thumbnail.jpg")
+#   product.banner.attach(io: URI.open("https://picsum.photos/1920/1080"), filename: "#{i}_banner.jpg")
+#   product.views = Faker::Number.between(from: 1, to: 5000)
+#   product.save
+# end
 
 categories=[
   {level1:"iPhone11",level1_children:[
