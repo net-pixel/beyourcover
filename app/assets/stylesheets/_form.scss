@@ -96,6 +96,18 @@
           padding: 0 10px;
           height: 48px;
         }
+        &__detail {
+          border-radius: 4px;
+          display: block;
+          line-height: 150px;
+          font-size: 14px;
+          width: 100%;
+          border: 1px solid;
+          margin-bottom: 15px;
+          position: relative;
+          padding: 0 10px;
+          height: 150px;
+        }
       }
 
       .mandatory {

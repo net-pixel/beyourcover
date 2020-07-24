@@ -14,4 +14,19 @@ Rails.application.routes.draw do
     get "users/profile/:id", to: "users/sessions#show", as: "profile"
   end
 
+  resources :products do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+    member do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+    resources :buyers, only: [:new, :create]
+  end
+  resources :categories, only: [:index, :show]
+
+  resources :cards, only: [:new, :create, :show, :destroy]
+
 end
