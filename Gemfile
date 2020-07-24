@@ -60,4 +60,5 @@ gem 'rails-i18n'
 gem 'pry-rails'
 gem 'ancestry'
 gem 'active_hash'
+gem 'faker'
 # CustomGem End
