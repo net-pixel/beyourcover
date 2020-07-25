@@ -53,11 +53,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :first_name, :last_name, :first_kana, :last_kana ])
   end
 
-  # def sign_up_params
-  #   params.require(:user).permit(:name, :email, :password, :first_name,:last_name, :first_kana, :last_kana)
-  # end
-
   def address_params
-    params.require(:address).permit(:post_code, :prefecture, :city, :address, :building, :phone_number )
+    params.require(:address).permit(:post_code, :prefecture_id, :city, :address, :building, :phone_number )
   end
 end

@@ -12,9 +12,9 @@
           .product-body__box__image
             = image_tag product.images[0].item.url
           .product-body__box__category
-            = product.category.root.name
-            \-{product.category.parent.name}
-            \-{product.category.name}
+            -# = product.category.root.name
+            -# = product.category.parent.name
+            = product.category.name
           %h4.product-body__box__title
             = product.name
           .product-body__box__lead
