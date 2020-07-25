@@ -1,0 +1,64 @@
+= render 'layouts/navbar'
+.space
+.showMain
+  .showMain__content
+    .showMain__content__topContent
+      .showMain__content__topContent__itemBox
+        %h2.showMain__content__topContent__itemBox__name
+          = @product.name
+        .showMain__content__topContent__itemBox__body
+          %ul
+            %li
+              = image_tag @product.images[0].item.url
+              %ul
+                - @product.images.each do |image|
+                  %li
+                    = image_tag image.item.url
+        .showMain__content__topContent__itemBox__price
+          %span
+            = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
+          .showMain__content__topContent__itemBox__price__detail
+            %span (税込)
+            %span 送料込み
+          - if @product.buyer_id.present?
+            .showMain__content__topContent__itemBox__soldOut
+              SOLD OUT
+          - elsif user_signed_in? && current_user.id != @product.user_id
+            .showMain__content__topContent__itemBox__purchaseBtn
+              = link_to new_product_buyer_path(@product.id) do
+                購入画面に進む
+          - elsif user_signed_in? && current_user.id == @product.user_id
+            .showMain__content__topContent__itemBox__purchaseBtn 出品中
+          - else
+            .showMain__content__topContent__itemBox__purchaseBtn
+              = link_to user_session_path do
+                購入画面に進む
+        .showMain__content__topContent__itemBox__itemDetail
+          = @product.detail
+        .showMain__content__topContent__itemBox__table
+          %table
+            %tbody
+              %tr
+                %th カテゴリー
+                %td
+                  -# = product.category.root.name
+                  -# = product.category.parent.name
+                  = @product.category.name
+              %tr
+                %th ブランド
+                %td
+                  = @product.brand
+
+              %tr
+                %th 配送料の負担
+                %td
+                  = "#{@product.postage.to_s}"
+              %tr
+                %th 発送元の地域
+                %td
+                  = link_to '#' do
+                    = @product.prefecture.name
+              %tr
+                %th.showMain__content__topContent__itemBox__table__title 発送日の目安
+                %td.showMain__content__topContent__itemBox__table__data
+                  = @product.shipping_day
