@@ -61,4 +61,6 @@ gem 'pry-rails'
 gem 'ancestry'
 gem 'active_hash'
 gem 'faker'
+gem 'carrierwave'
+gem 'mini_magick'
 # CustomGem End

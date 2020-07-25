@@ -286,3 +286,16 @@ input.btn {
 #grandchildren_box{
   display: none;
 }
+
+//画像
+#products-image {
+  background-color: #ffffff;
+  min-height: auto;
+  width: 100%;
+  padding: 40px;
+
+  p {
+    font-weight: unset;
+    margin: 10px 0 15px;
+  }
+}

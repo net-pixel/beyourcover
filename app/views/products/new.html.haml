@@ -7,6 +7,33 @@
       - if @product.errors.any?
         %span.err_message
           = I18n.t("errors.messages.not_saved")
+
+    #products-image
+      %label
+        出品画像
+      %span.magenta
+        必須
+      - if @product.errors.any?
+        %span.err_message
+          =  @product.errors.full_messages_for(:images).shift
+      %p
+        最大10枚までアップロードできます
+      #previews
+        - if @product.persisted?
+          - @product.images.each_with_index do |image, i|
+            = image_tag image.item.url, data: { index: i }, width: "100", height: '100', class: "aaa"
+      = f.fields_for :images do |image|
+        .js-file_group{"data-index": "#{image.index}"}
+          = image.file_field :item, class: 'js-file', accept:"image/*"
+          - if @product.persisted?
+            %span.js-remove 削除
+        .save-box
+          - if @product.persisted?
+            = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+      - if @product.persisted?
+        .js-file_group{"data-index": "#{@product.images.count}"}
+          = file_field_tag :item, name: "product[images_attributes][#{@product.images.count}][item]", class: 'js-file'
+
       .user-form__field__box
         .user-form__field__box__group
           .user-form__field__box__group__head
@@ -61,7 +88,7 @@
             - if @product.errors.any?
               %span.err_message
                 =  @product.errors.full_messages_for(:brand).shift
-            = f.text_field :brand, id: :count_name, class: "user-form__field__box__group__form", placeholder: "40文字まで", maxlength: "40"
+            = f.text_field :brand, class: "user-form__field__box__group__form", placeholder: "40文字まで", maxlength: "40"
         .user-form__field__box__group
           .user-form__field__box__group__head
             %label
