@@ -3,3 +3,39 @@
   .cover-img
     = image_tag "cover.jpg"
     %p あなたに必要なカバーは何ですか？
+
+.container.article-body
+  .row
+    - @products.each do |product|
+      .article-body__box.col-xl-4.col-md-6.col-sm-12
+        = link_to product_path(product), class: "design" do
+          .product-body__box__image
+            = image_tag product.images[0].item.url
+          .product-body__box__category
+            = product.category.root.name
+            \-{product.category.parent.name}
+            \-{product.category.name}
+          %h4.product-body__box__title
+            = product.name
+          .product-body__box__lead
+            = product.updated_at.strftime("%Y年%m月%e日")
+            \-
+            = product.detail.truncate_words(15)
+            %ul
+              %li
+                = "#{product.price.to_s(:delimited, delimiter: ',')}円"
+                %p (税抜き)
+          - if current_user
+            - if current_user.admin
+              %hr/
+              .product-body__box__button
+                %td= link_to 'Edit', edit_product_path(product), class: "each-ba"
+                %td= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "each-ba"
+          - else
+
+.p-section.col-md-4.col-sm-6.col-6
+  .front
+    .imgbox
+      %a{:href => "#"}
+        %img{:alt => "img1", :src => "#"}/
+        %h3 iPhone 11
