@@ -1,12 +1,39 @@
 = render 'layouts/navbar'
 .space
-= form_for(@product, url: new_product_path, html: {method: 'POST'}) do |f|
+= form_with model: @product do |f|
   .user-form
     .user-form__field
       %h2.body_head 商品情報入力
       - if @product.errors.any?
         %span.err_message
           = I18n.t("errors.messages.not_saved")
+
+    #products-image
+      %label
+        出品画像
+      %span.magenta
+        必須
+      - if @product.errors.any?
+        %span.err_message
+          =  @product.errors.full_messages_for(:images).shift
+      %p
+        最大10枚までアップロードできます
+      #previews
+        - if @product.persisted?
+          - @product.images.each_with_index do |image, i|
+            = image_tag image.item.url, data: { index: i }, width: "100", height: '100', class: "aaa"
+      = f.fields_for :images do |image|
+        .js-file_group{"data-index": "#{image.index}"}
+          = image.file_field :item, class: 'js-file', accept:"image/*"
+          - if @product.persisted?
+            %span.js-remove 削除
+        .save-box
+          - if @product.persisted?
+            = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+      - if @product.persisted?
+        .js-file_group{"data-index": "#{@product.images.count}"}
+          = file_field_tag :item, name: "product[images_attributes][#{@product.images.count}][item]", class: 'js-file'
+
       .user-form__field__box
         .user-form__field__box__group
           .user-form__field__box__group__head
@@ -21,7 +48,7 @@
             = f.text_field :name, id: :count_name, class: "user-form__field__box__group__form", placeholder: "40文字まで", maxlength: "40"
             .count_box
               %span.up_count 0
-              \/ 1000文字
+              \/ 40文字
         .user-form__field__box__group
           .user-form__field__box__group__head
             %label
@@ -55,13 +82,13 @@
           .user-form__field__box__group__head
             %label
               ブランド名
-            %span.mandatory
-              必須
+            %span
+              任意
             %br
             - if @product.errors.any?
               %span.err_message
                 =  @product.errors.full_messages_for(:brand).shift
-            = f.text_field :brand, id: :count_name, class: "user-form__field__box__group__form", placeholder: "40文字まで", maxlength: "40"
+            = f.text_field :brand, class: "user-form__field__box__group__form", placeholder: "40文字まで", maxlength: "40"
         .user-form__field__box__group
           .user-form__field__box__group__head
             %label
@@ -71,8 +98,8 @@
             %br
             - if @product.errors.any?
               %span.err_message
-                =  @product.errors.full_messages_for(:brand).shift
-            = f.text_field :brand, id: :count_name, class: "user-form__field__box__group__form", placeholder: "", maxlength: "40"
+                =  @product.errors.full_messages_for(:postage).shift
+            = f.select :postage, [["送料込み(出品者負担)", "出品者負担"], ["着払い(購入者負担)", "購入者負担"]], {}, class: "user-form__field__box__group__form", include_blank: "選択して下さい"
         .user-form__field__box__group
           .user-form__field__box__group__head
             %label
@@ -82,8 +109,8 @@
             %br
             - if @product.errors.any?
               %span.err_message
-                =  @product.errors.full_messages_for(:brand).shift
-            = f.text_field :brand, id: :count_name, class: "user-form__field__box__group__form", placeholder: "", maxlength: "40"
+                =  @product.errors.full_messages_for(:prefecture_id).shift
+            = f.collection_select(:prefecture_id, Prefecture.all, :id, :name,{include_blank: "選択して下さい"}, {class: "user-form__field__box__group__form"} )
         .user-form__field__box__group
           .user-form__field__box__group__head
             %label
@@ -93,9 +120,31 @@
             %br
             - if @product.errors.any?
               %span.err_message
-                =  @product.errors.full_messages_for(:brand).shift
-            = f.text_field :brand, id: :count_name, class: "user-form__field__box__group__form", placeholder: "", maxlength: "40"
+                =  @product.errors.full_messages_for(:shipping_day).shift
+            = f.select :shipping_day, [["1〜2日で発送", "1〜2日で発送"], ["2〜3日で発送", "2〜3日で発送"], ["4〜7日で発送", "4〜7日で発送"]], {}, class: "user-form__field__box__group__form", include_blank: "選択して下さい"
 
 
-
-        = f.submit "登録", class: 'btn-default btn-sns'
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              販売価格
+            %span.mandatory
+              必須
+            - if @product.errors.any?
+              %span.err_message
+                =  @product.errors.full_messages_for(:price).shift
+            .namebox
+              .pricetitle
+                (¥100 〜 ¥9,999,999)
+              .pricebox
+                .priceTag
+                  ¥
+                = f.number_field :price, placeholder: "税込み価格(半角数字のみ)", min: "100", max: "9999999", class: "nmform"
+            - if @product.id.nil?
+              = f.submit "出品する", title: "商品を出品する", class: 'btn-default btn-sns'
+            - elsif user_signed_in? && current_user.id == @product.user_id
+              = f.submit "更新する", title: "商品を更新する", class: 'btn-default btn-sns'
+              = link_to product_path(@product), method: :delete, data: { confirm: '削除しますか？' } do
+                %input#product_delete{type: "button", value: "この商品を削除", title: "商品を削除"}
+          .backpage
+            %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'btn-default btn-sns'}

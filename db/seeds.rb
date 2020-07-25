@@ -27,19 +27,19 @@ Address.create!(
   user_id: 1,
 )
 
-10.times do |i|
-  product = Product.new
-  product.name = Faker::Food.dish
-  product.detail = Faker::Lorem.paragraph_by_chars(number: 500)
-  product.brand = Faker::Name.male_first_name
-  product.price = Faker::Number.number(digits: 4)
-  product.category_id = Faker::Number.between(from: 1, to: 2)
-  product.postage = "着払い"
-  product.prefecture_id = Faker::Number.between(from: 1, to: 48)
-  product.shipping_day = "1~2日で発送"
-  product.user_id = 1
-  product.save
-end
+# 10.times do |i|
+#   product = Product.new
+#   product.name = Faker::Food.dish
+#   product.detail = Faker::Lorem.paragraph_by_chars(number: 500)
+#   product.brand = Faker::Name.male_first_name
+#   product.price = Faker::Number.number(digits: 4)
+#   product.category_id = Faker::Number.between(from: 1, to: 2)
+#   product.postage = "出品者負担"
+#   product.prefecture_id = Faker::Number.between(from: 1, to: 48)
+#   product.shipping_day = "1〜2日で発送"
+#   product.user_id = 1
+#   product.save
+# end
 
 categories=[
   {level1:"レディース",level1_children:[
