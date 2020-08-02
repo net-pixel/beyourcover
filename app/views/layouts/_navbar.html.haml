@@ -15,22 +15,25 @@
               #bar3.bar
             %div
               %ul#nav.nav.nav-sm
-                .mainnav
-                  %li= link_to "home", root_path, class: 'select'
-                  %li= link_to "about", "#", class: 'select'
-                  - if current_user
+                - if current_user
+                  .mainnav
+                    %li= link_to "home", root_path, class: 'select'
+                    %li= link_to "about", "#", class: 'select'
                     %li
                       %a#subnav.select.drop
                         = current_user.name
                         %i.fas.fa-caret-down
-                    .subnav
-                      %li
-                        .dds
-                          - if current_user.admin
-                            = link_to "New Product", new_product_path, class: 'dds__select'
+                  .subnav
+                    %li
+                      .dds
+                        - if current_user.admin
+                          = link_to "New Product", new_product_path, class: 'dds__select'
                           = link_to "Account Settings", edit_user_registration_path, class: 'dds__select'
                           = link_to "Logout", destroy_user_session_path, class:'dds__select', method: :delete
-                  - else
+                - else
+                  .mainnav
+                    %li= link_to "home", root_path, class: 'select'
+                    %li= link_to "about", "#", class: 'select'
                     %li.nav-item
                       = link_to "Signup", new_user_registration_path, class:'select'
                     %li.nav-item
