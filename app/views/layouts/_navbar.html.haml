@@ -28,8 +28,8 @@
                         .dds
                           - if current_user.admin
                             = link_to "New Product", new_product_path, class: 'dds__select'
-                            = link_to "Account Settings", edit_user_registration_path, class: 'dds__select'
-                            = link_to "Logout", destroy_user_session_path, class:'dds__select', method: :delete
+                          = link_to "Account Settings", edit_user_registration_path, class: 'dds__select'
+                          = link_to "Logout", destroy_user_session_path, class:'dds__select', method: :delete
                   - else
                     %li.nav-item
                       = link_to "Signup", new_user_registration_path, class:'select'
