@@ -6,21 +6,11 @@ $(function(){
     $('.subnav').removeClass('change');
   });
 
-  $('#subnav').on('click', function () {
-    $('.subnav').toggleClass('change');
+  $('#subnav').mouseover(function(){
+    $('.subnav').addClass('change')
   });
-
-  $('.article-body').on('click', function() {
-    $('.subnav').removeClass('change');
-  });
-  $('.article-body__box').on('click', function() {
-    $('.subnav').removeClass('change');
-  });
-  $('.main_bg').on('click', function() {
-    $('.subnav').removeClass('change');
-  });
-  $('.site-title').on('click', function() {
-    $('.subnav').removeClass('change');
+  $('.subnav').mouseout(function(){
+    $('.subnav').toggleClass('change')
   });
 })
 
