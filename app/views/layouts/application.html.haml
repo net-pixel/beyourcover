@@ -15,9 +15,8 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     = yield
-    %footer.footer
-      .footer-bottom
-        Copyright © BeYourCover 2020
+  %footer
+    = render 'layouts/footer'
     = javascript_include_tag 'application'
     = javascript_include_tag 'products'
     = javascript_include_tag 'categories'

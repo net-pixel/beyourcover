@@ -1,0 +1,29 @@
+.container-fluid.px-5
+  .row
+    .col-md-6.col-sm-12
+      .msg
+        About Us
+      .row
+        .col-12
+          .msg__text
+            あなたの生活を、守り彩る、そんなアイテムを取り揃えております。
+            %br
+            お気に入りのアイテムをお探しするお役に立てますように。
+        .social.col-12.mt-3
+          = link_to '', "https://instagram.com/masatakakuwada0602", class: 'fab fa-instagram', target: '_blank'
+    .col-md-6.col-sm-12
+      .msg
+        User Guide
+      .guide
+        .msg__text
+          =link_to 'プライバシーポリシー', root_path, class: 'msg__text__line'
+          =link_to 'よくあるご質問', root_path, class: 'msg__text__line'
+          =link_to '配送について', root_path, class: 'msg__text__line'
+          =link_to '返金・返品について', root_path, class: 'msg__text__line'
+          =link_to '利用契約', root_path, class: 'msg__text__line'
+          =link_to '特定商取引法に基づく記載', root_path, class: 'msg__text__line'
+          =link_to 'お問い合わせ', root_path, class: 'msg__text__line'
+
+.footer
+  .footer-bottom
+    Copyright © BeYourCover 2020

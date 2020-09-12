@@ -1,0 +1,20 @@
+- @products.each do |product|
+  .product-body__box.col-xl-4.col-md-6.col-sm-12
+    = link_to product_path(product), class: "design" do
+      .product-body__box__image
+        = image_tag product.images[0].item.url
+      .product-body__box__category
+        -# = product.category.root.name
+        -# = product.category.parent.name
+        = product.category.name
+      %h4.product-body__box__title
+        = product.name
+      .product-body__box__lead
+        = "#{product.price.to_s(:delimited, delimiter: ',')}円"
+      .Tax (税抜き)
+      - if current_user
+        - if current_user.admin
+          %hr/
+          .product-body__box__button
+            %td= link_to 'Edit', edit_product_path(product), class: "each-ba"
+            %td= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "each-ba"
