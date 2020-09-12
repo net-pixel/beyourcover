@@ -1,5 +1,5 @@
 - @products.each do |product|
-  .article-body__box.col-xl-4.col-md-6.col-sm-12
+  .product-body__box.col-xl-4.col-md-6.col-sm-12
     = link_to product_path(product), class: "design" do
       .product-body__box__image
         = image_tag product.images[0].item.url

@@ -1,14 +1,14 @@
 /* cover写真 */
 
-.container-fluid{
+.top-imgbox{
 	max-width: 100%;
 }
 
-.container-fluid .cover-img{
+.top-imgbox .cover-img{
 	position: relative;
 }
 
-.container-fluid .cover-img p{
+.top-imgbox .cover-img p{
 	position: absolute;
 	font-family: var(--M-PLUS-1-p);
 	top: 40%;
@@ -24,11 +24,93 @@
 	color: #fff;
 }
 
-.container-fluid .cover-img img{
+.top-imgbox .cover-img img{
 	width: 100%;
 }
 
-/*space*/
-.space {
-  padding-top: 70px;
+/* Contents page */
+.content {
+	margin-bottom: 2rem;
+	transition: 0.6s;
+	&:hover {
+		opacity: .7;
+		transform: scale(1.1);
+	}
+	&__front {
+		position: relative;
+		font-family: var(--M-PLUS-1-p);
+		margin: 5%;
+		// opacity: .8;
+		padding: 0;
+		box-sizing: border-box;
+		overflow: hidden!important;
+		border-radius: .5em;
+		box-shadow: -12px -12px 12px 0 rgba(255,255,255,1),
+		12px 12px 12px 0 rgba(0,0,0,.3);
+		&__imgbox {
+			position: relative;
+			img {
+				width: 100%;
+			}
+			&__text {
+				position: absolute;
+				font-family: var(--M-PLUS-1-p);
+				color: whitesmoke;
+				top: 50%;
+				left: 50%;
+				-ms-transform: translate(-50%,-50%);
+				-webkit-transform: translate(-50%,-50%);
+				transform: translate(-50%,-50%);
+				width: 100%;
+				font-size: 4vw;
+				text-align: center;
+				text-shadow: 0 2px 5px rgba(0, 0, 0, .8);
+			}
+		}
+	}
 }
+
+
+// .container-fluid .content{
+// 	margin-bottom: 2rem;
+// }
+// .container-fluid .content .front{
+// 	position: relative;
+// 	font-family: var(--M-PLUS-1-p);
+// 	margin: 5%;
+// 	// opacity: .8;
+// 	padding: 0;
+//   box-sizing: border-box;
+// 	overflow: hidden!important;
+// 	border-radius: .5em;
+// 	box-shadow: -12px -12px 12px 0 rgba(255,255,255,1),
+//                 12px 12px 12px 0 rgba(0,0,0,.3);
+// }
+
+// .container-fluid .content .imgbox{
+//     position: relative;
+// }
+
+// .container-fluid .content .imgbox img{
+//     width: 100%;
+//     transition: 0.6s;
+// }
+// .container-fluid .content:hover .imgbox img{
+//     opacity: .7;
+//     transform: scale(1.1);
+// }
+
+// .imgbox h3{
+// 	position: absolute;
+// 	font-family: var(--M-PLUS-1-p);
+// 	color: whitesmoke;
+// 	top: 50%;
+// 	left: 50%;
+// 	-ms-transform: translate(-50%,-50%);
+// 	-webkit-transform: translate(-50%,-50%);
+// 	transform: translate(-50%,-50%);
+// 	width: 100%;
+// 	font-size: 4vw;
+// 	text-align: center;
+// 	text-shadow: 0 2px 5px rgba(0, 0, 0, .8);
+// }

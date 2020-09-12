@@ -3,8 +3,13 @@ class CardsController < ApplicationController
 
   require 'payjp'
 
-  def index
+  def show
     @users = User.all
   end
   
+  private
+
+  def set_cards
+    @cards = Card.all
+  end
 end

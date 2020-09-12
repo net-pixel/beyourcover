@@ -1,16 +1,46 @@
 = render 'layouts/navbar'
-.container-fluid.p-0
+.top-imgbox
   .cover-img
     = image_tag "cover.jpg"
     %p あなたに必要なカバーは何ですか？
 
-.container.article-body
+-# .container.product-body
+-#   .row
+-#     = render 'products/shared/product_list'
+
+.container-fluid.mt-5
   .row
-    = render 'products/shared/product_list'
-    
-.p-section.col-md-4.col-sm-6.col-6
-  .front
-    .imgbox
-      %a{:href => "#"}
-        %img{:alt => "img1", :src => "#"}/
-        %h3 iPhone 11
+    .content.col-md-4.col-sm-6.col-6
+      .content__front
+        .content__front__imgbox
+          %a{:href => "#"}
+            = image_tag "square.jpg"
+            .content__front__imgbox__text iPhone 11
+
+    .content.col-md-4.col-sm-6.col-6
+      .content__front
+        .content__front__imgbox
+          %a{:href => "#"}
+            = image_tag "square1.jpg"
+            .content__front__imgbox__text iPhone 11 Pro
+
+    .content.col-md-4.col-sm-6.col-6
+      .content__front
+        .content__front__imgbox
+          %a{:href => "#"}
+            = image_tag "square2.jpg"
+            .content__front__imgbox__text iPhone 11 Pro Max
+
+    .content.col-md-4.col-sm-6.col-6
+      .content__front
+        .content__front__imgbox
+          %a{:href => "#"}
+            = image_tag "square3.jpg"
+            .content__front__imgbox__text AirPods
+
+    .content.col-md-4.col-sm-6.col-6
+      .content__front
+        .content__front__imgbox
+          %a{:href => "#"}
+            = image_tag "square4.jpg"
+            .content__front__imgbox__text AirPods Pro
