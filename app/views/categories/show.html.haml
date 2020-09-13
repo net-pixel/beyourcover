@@ -1,0 +1,17 @@
+= render 'layouts/navbar'
+.space
+.container-fluid.mt-5
+  .row
+    .contentCat.col-12
+      .contentCat__show
+        = "#{@category.name}の商品一覧"
+    .products
+      - @products.each do |p|
+        .product.col-md-4.col-sm-6.col-6
+          .product__front
+            .product__front__imgbox
+              = image_tag p.images[0].item.url
+          .product__title
+            = p.name
+          .product__price
+            = "#{p.price.to_s(:delimited, delimiter: ',')}円"

@@ -60,3 +60,44 @@ footer {
       align-items: center;
   }
 }
+
+.msg {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  &__text{
+    margin-top: 1rem;
+    font-size: 80%;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    &__line {
+      text-decoration: none;
+      color: gray;
+      &:hover {
+        text-decoration: none;
+        color: gray;
+      }
+    }
+  }
+}
+
+.social {
+  width: 100%;
+  cursor: pointer;
+  font-size: 0.7rem;
+  display: flex;
+}
+
+.fab.fa-instagram {
+  color: gray;
+  text-decoration: none;
+}
+.fab.fa-twitter {
+  color: gray;
+  text-decoration: none;
+}
+
+.social a{
+	padding-right: 4%;
+	cursor: pointer;
+}
