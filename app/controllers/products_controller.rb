@@ -9,21 +9,21 @@ class ProductsController < ApplicationController
       @user = User.find(current_user.id)
     end
     @images = Image.limit(3).order(id: "DESC")
+    @iPhone11 = Category.name
   end
 
-  def get_category_children
-    @category_children = Category.find("#{params[:parent_name]}").children
-  end
+  # def get_category_children
+  #   @category_children = Category.find("#{params[:parent_name]}").children
+  # end
 
-  def get_category_grandchildren
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
-  end
+  # def get_category_grandchildren
+  #   @category_grandchildren = Category.find("#{params[:child_id]}").children
+  # end
 
   def new
     @product = Product.new
     @product.images.new
   end
-
 
   def create
     @product = Product.new(product_params)
@@ -81,7 +81,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :detail, :brand, :price, :category_id, :postage, :prefecture_id, :shipping_day, images_attributes: [:item, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:product).permit(:name, :detail, :brand, :price, :category_id, :postage, :stock, images_attributes: [:item, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def move_to_index
