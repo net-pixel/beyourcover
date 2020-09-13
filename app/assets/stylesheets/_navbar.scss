@@ -11,7 +11,7 @@ header{
   color: white;
   font-family: var(--M-PLUS-1-p);
   text-decoration: none;
-  font-size: 40px;
+  font-size: 2rem;
   line-height: 70px;
   margin-left: 30px;
   &:hover{
@@ -152,6 +152,9 @@ header{
 @media screen and (max-width:800px){
   .subnav.change {
     display: none;
+  }
+  .site-title a.home{
+    font-size: 1.4rem;
   }
   .search-head-btn {
     margin-right: 50px;
