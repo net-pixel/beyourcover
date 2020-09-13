@@ -58,10 +58,7 @@ ActiveRecord::Schema.define(version: 2020_07_20_143250) do
     t.integer "price", null: false
     t.integer "category_id"
     t.string "postage", null: false
-    t.integer "prefecture_id", null: false
-    t.string "shipping_day", null: false
-    t.integer "user_id", null: false
-    t.integer "buyer_id"
+    t.integer "stock", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_products_on_name"

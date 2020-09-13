@@ -73,8 +73,8 @@
     #category_box.user-form__field__category
       #partent_box.pulldown.user-form__field__category__box
         = f.select :category_id, options_for_select( @category_parent_array.pluck(:name, :id)),{include_blank: "選択してください"}, { class: "user-form__field__category__box__parent", id: "parent_category"}
-      #children_box.pulldown.user-form__field__category__box__children
-      #grandchildren_box.pulldown.user-form__field__category__box__grandchildren
+      -# #children_box.pulldown.user-form__field__category__box__children
+      -# #grandchildren_box.pulldown.user-form__field__category__box__grandchildren
 
 
     .user-form__field__box__group

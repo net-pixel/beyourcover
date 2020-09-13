@@ -42,12 +42,13 @@ Address.create!(
 # end
 
 categories=[
-  {level1:"iPhone 11",level1_children:},
-  {level1:"iPhone 11 Pro",level1_children:},
-  {level1:"iPhone 11 Pro Max",level1_children:},
-  {level1:"AirPods",level1_children:},
-  {level1:"AirPods Pro",level1_children:}
+  {level1:"iPhone 11"},
+  {level1:"iPhone 11 Pro"},
+  {level1:"iPhone 11 Pro Max"},
+  {level1:"AirPods"},
+  {level1:"AirPods Pro"}]
 categories.each.with_index(1) do |category,i|
   level1_var="@category#{i}"
   level1_val= Category.create(name:"#{category[:level1]}")
+  eval("#{level1_var} = level1_val")
 end

@@ -13,6 +13,7 @@ ja:
         shipping_day: 発送日数
         price: 販売価格
         images: 商品画像
+        stock: 在庫
       address:
         post_code: 郵便番号
         prefecture_id: 都道府県
