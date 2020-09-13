@@ -102,26 +102,14 @@
     .user-form__field__box__group
       .user-form__field__box__group__head
         %label
-          発送元の地域
+          在庫
         %span.mandatory
           必須
         %br
         - if @product.errors.any?
           %span.err_message
-            =  @product.errors.full_messages_for(:prefecture_id).shift
-        = f.collection_select(:prefecture_id, Prefecture.all, :id, :name,{include_blank: "選択して下さい"}, {class: "user-form__field__box__group__form"} )
-    .user-form__field__box__group
-      .user-form__field__box__group__head
-        %label
-          発送までの日数
-        %span.mandatory
-          必須
-        %br
-        - if @product.errors.any?
-          %span.err_message
-            =  @product.errors.full_messages_for(:shipping_day).shift
-        = f.select :shipping_day, [["1〜2日で発送", "1〜2日で発送"], ["2〜3日で発送", "2〜3日で発送"], ["4〜7日で発送", "4〜7日で発送"]], {}, class: "user-form__field__box__group__form", include_blank: "選択して下さい"
-
+            =  @product.errors.full_messages_for(:stock).shift
+        = f.number_field :stock, class: "user-form__field__box__group__form"
 
     .user-form__field__box__group
       .user-form__field__box__group__head

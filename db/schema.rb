@@ -59,10 +59,12 @@ ActiveRecord::Schema.define(version: 2020_07_20_143250) do
     t.integer "category_id"
     t.string "postage", null: false
     t.integer "stock", null: false
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_products_on_name"
     t.index ["price"], name: "index_products_on_price"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

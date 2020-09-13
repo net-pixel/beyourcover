@@ -8,6 +8,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.integer :category_id
       t.string :postage, null: false
       t.integer :stock, null: false
+      t.references :user
       t.timestamps
     end
     add_index :products, :name
