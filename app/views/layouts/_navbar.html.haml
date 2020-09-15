@@ -5,6 +5,13 @@
         .site-title
           = link_to "BeYourCover", root_path, class: 'home'
         .site-nav
+          #cart.cart-head-btn
+            = link_to cart_path(@cart), class: "cart" do
+              %i.fas.fa-shopping-cart
+                -# - if @cart_details != nil
+                -#   - @cart_details.each do |cart_detail|
+                -#     - if cart_detail.quantity > 0
+                -#       = cart_detail.quantity
           #search.search-head-btn
             = link_to "#", class: "search" do
               %i.fas.fa-search
