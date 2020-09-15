@@ -1,4 +1,4 @@
-$(window).on('load', function () {
+$(function () {
 
   //Drag&Drop
   $(function () {
@@ -240,11 +240,21 @@ $(window).on('load', function () {
   $('#count_area').trigger('input');
 
   //SHOWPAGE画像きり変え
-  $('.subImg').mouseover(function(e) {
+  $('.subImg').on('mouseover',function(e) {
     const url = $(this).attr("src");
     $('.mainImg').attr('src', url)
   })
   $('.subImg').on('click', function(){
-    $('.mainImg').mouseover()
+    $('.mainImg').on('mouseover')
+  })
+
+    //Cartが0の時
+  $("#addToCart").on('click', function(e){
+    if(document.getElementById('quantity').value === ""){
+      alert("数量を選択してください。");
+      return false;
+    }else{
+      return true;
+    }
   })
 });

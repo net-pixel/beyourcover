@@ -12,19 +12,20 @@ class ApplicationController < ActionController::Base
     Rails.env.production?
   end
 
+  
+  
+  private
+  def basic_auth
+    authenticate_or_request_with_http_basic do |username, password|
+      username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
+    end
+  end
+  
   def current_cart
     Cart.find(session[:cart_id])
   rescue ActiveRecord::RecordNotFound
     cart = Cart.create
     session[:cart_id] = cart.id
     cart
-  end
-
-
-  private
-  def basic_auth
-    authenticate_or_request_with_http_basic do |username, password|
-      username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
-    end
   end
 end

@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   before_action :set_cart
 
   def show
-    @cart_details = current_cart.cart_details
+    @cart_details = @cart.cart_details
   end
 
   def add_product

@@ -25,14 +25,18 @@ Rails.application.routes.draw do
     end
     resources :buyers, only: [:new, :create]
   end
+
   resources :categories, only: [:index, :show]
 
   resources :cards, only: [:index, :new, :create, :edit, :show, :destroy]
+
   resources :carts, only: [:show, :destroy] do
     collection do
       post 'add_product'
       post 'update_product'
     end
   end
+
+  resources :cart_details
 
 end

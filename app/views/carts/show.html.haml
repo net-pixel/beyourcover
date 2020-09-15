@@ -1,2 +1,34 @@
 = render 'layouts/navbar'
 .space
+.checkout
+  .checkout__title
+    My Cart
+  - if @cart_details.count == 0
+    .checkout__empty
+      No Items...
+  - else
+    - @cart_details.each do |cart_detail|
+      .checkout__product
+        .checkout__product__image.col-md-3.col-12
+          = image_tag cart_detail.product.images[0].item.url, width: 120, height: 150
+        .checkout__product__details.col-md-9.col-12
+          .checkout__product__details__text.col-sm-6.col-12
+            %p
+              商品名：
+              = cart_detail.product.name
+            %p
+              カテゴリー：
+              = cart_detail.product.category.name
+            %p
+              ブランド：
+              = cart_detail.product.brand
+          .checkout__product__details__quantity.col-sm-3.col-12
+            %p
+              数量：
+              = cart_detail.quantity
+          .checkout__product__details__price.col-sm-3.col-12
+            %p
+              金額：
+              = "¥#{cart_detail.product.price.to_s(:delimited, delimiter: ',')}"
+    .cart__content__total
+      -# = "合計 : ¥#{(@cart.total_price.to_s(:delimited, delimiter: ','))}"

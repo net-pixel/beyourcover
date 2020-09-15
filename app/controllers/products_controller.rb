@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, except: [:index, :show]
   before_action :set_category, only: [:new, :edit, :create, :update, :destroy]
+  before_action :set_cart
 
   def index
     @products = Product.includes(:images).order("created_at DESC")
@@ -86,5 +87,9 @@ class ProductsController < ApplicationController
 
   def move_to_index
     redirect_to user_session_path unless user_signed_in?
+  end
+
+  def set_cart
+    @cart = current_cart
   end
 end
