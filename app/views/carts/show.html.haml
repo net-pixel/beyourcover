@@ -25,7 +25,9 @@
           .checkout__product__details__quantity.col-sm-3.col-12
             %p
               数量：
-              = cart_detail.quantity
+              = form_with url: cart_detail_path(cart_detail), method: :patch, local: true do |f|
+                = f.number_field :quantity ,placeholder: "#{cart_detail.quantity}", value: "#{cart_detail.quantity}", min: 1, max: cart_detail.product.stock
+                = f.submit "変更"
           .checkout__product__details__price.col-sm-3.col-12
             %p
               金額：
