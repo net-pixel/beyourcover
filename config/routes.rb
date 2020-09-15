@@ -28,5 +28,11 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
 
   resources :cards, only: [:index, :new, :create, :edit, :show, :destroy]
+  resources :carts, only: [:show, :destroy] do
+    collection do
+      post 'add_product'
+      post 'update_product'
+    end
+  end
 
 end

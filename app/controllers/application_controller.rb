@@ -12,6 +12,15 @@ class ApplicationController < ActionController::Base
     Rails.env.production?
   end
 
+  def current_cart
+    Cart.find(session[:cart_id])
+  rescue ActiveRecord::RecordNotFound
+    cart = Cart.create
+    session[:cart_id] = cart.id
+    cart
+  end
+
+
   private
   def basic_auth
     authenticate_or_request_with_http_basic do |username, password|
