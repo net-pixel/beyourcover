@@ -2,6 +2,7 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :set_cart
 
   def show
     @user = User.find(params[:id])
@@ -23,7 +24,11 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def set_cart
+    @cart = current_cart
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

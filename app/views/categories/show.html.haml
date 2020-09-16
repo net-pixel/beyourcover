@@ -7,12 +7,18 @@
         = "#{@category.name}の商品一覧"
     .products
       - @products.each do |p|
-        .product.col-md-4.col-sm-6.col-6
-          .product__front
-            = link_to product_path(p) do
-              .product__front__imgbox
-                = image_tag p.images[0].item.url
-            .product__title
-              = p.name
-            .product__price
-              = "#{p.price.to_s(:delimited, delimiter: ',')}円"
+        - if p.stock == 0
+          .no-stock
+            大変申し訳ございません
+            %br
+            在庫がありません
+        - else
+          .product.col-md-4.col-sm-6.col-6
+            .product__front
+              = link_to product_path(p) do
+                .product__front__imgbox
+                  = image_tag p.images[0].item.url
+              .product__title
+                = p.name
+              .product__price
+                = "#{p.price.to_s(:delimited, delimiter: ',')}円"

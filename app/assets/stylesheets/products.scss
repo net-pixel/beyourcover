@@ -73,6 +73,11 @@
 .products {
 	width: 100%;
 	display: flex;
+	.no-stock {
+		align-items: center;
+		margin: auto;
+		font-size: 2rem;
+	}
 	.product {
 		margin-bottom: 2rem;
 		transition: 0.6s;

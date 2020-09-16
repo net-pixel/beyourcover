@@ -133,17 +133,36 @@
             border-radius: .5em;
             box-shadow: -12px -12px 12px 0 rgb(255, 255, 255),
             12px 12px 12px 0 rgba(0,0,0,.3);
-            .quantity-select {
-              border-color:white;
-              border-radius: .3em;
-              box-shadow: -1px 0 12px 0 rgb(93, 97, 103),
-              12px 12px 12px 0 rgba(0,0,0,.3);
-            }
           }
         }
       }
     }
   }
+}
+
+.select-quantity {
+  border-color:white;
+  background-color: white;
+  border-radius: .3em;
+  box-shadow: -1px 0 12px 0 rgb(93, 97, 103),
+  12px 12px 12px 0 rgba(0,0,0,.3);
+}
+
+.cart-quantity {
+  border-radius: .3em;
+  box-shadow: -1px 0 12px 0 rgb(93, 97, 103),
+  5px 5px 5px 0 rgba(0,0,0,.3);
+  min-width: 35px;
+}
+
+.cart-edit {
+  border: none;
+  background-color:rgba(0,0,0,0);
+}
+
+.cart-delete {
+  border: none;
+  background-color:rgba(0,0,0,0);
 }
 
 @media screen and (max-width:800px) {

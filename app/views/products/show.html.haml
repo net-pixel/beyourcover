@@ -38,7 +38,7 @@
                 SOLD OUT
             .showMain__content__topContent__itemBox__detail__quantity
               購入数量：
-              = c.select :quantity, stock_array_maker(@stock), {include_blank: "選択する"}, {class: "quantity-select"}
+              = c.select :quantity, stock_array_maker(@stock), {include_blank: "選択する"}, {class: "select-quantity"}
             .showMain__content__topContent__itemBox__detail__btn
               - if @product.stock == 0
                 .showMain__content__topContent__itemBox__detail__btn__soldOut

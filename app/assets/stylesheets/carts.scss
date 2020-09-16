@@ -65,11 +65,20 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          p {
+            margin: 0;
+          }
         }
         &__price {
           display: flex;
           justify-content: center;
           align-items: center;
+          p {
+            margin: 0;
+          }
+          .button_to {
+            margin-left: 10px;
+          }
         }
       }
     }

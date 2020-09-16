@@ -26,11 +26,16 @@
             %p
               数量：
               = form_with url: cart_detail_path(cart_detail), method: :patch, local: true do |f|
-                = f.number_field :quantity ,placeholder: "#{cart_detail.quantity}", value: "#{cart_detail.quantity}", min: 1, max: cart_detail.product.stock
-                = f.submit "変更"
+                - if cart_detail.product.stock > 1
+                  = f.number_field :quantity ,placeholder: "#{cart_detail.quantity}", value: "#{cart_detail.quantity}", min: 1, max: cart_detail.product.stock, class: "cart-quantity"
+                  = f.submit "変更", {class: "cart-edit"}
+                - else
+                  = cart_detail.product.stock
+                  ラスト
           .checkout__product__details__price.col-sm-3.col-12
             %p
               金額：
               = "¥#{cart_detail.product.price.to_s(:delimited, delimiter: ',')}"
+            = button_to '削除', cart_detail_path(cart_detail), method: :delete, data: { confirm: '削除しますか?' }, class: "cart-delete"
     .cart__content__total
       -# = "合計 : ¥#{(@cart.total_price.to_s(:delimited, delimiter: ','))}"
