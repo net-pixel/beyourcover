@@ -73,10 +73,28 @@
 .products {
 	width: 100%;
 	display: flex;
+	flex-wrap: wrap;
 	.no-stock {
 		align-items: center;
 		margin: auto;
-		font-size: 2rem;
+		justify-content: center;
+		display: flex;
+		flex-direction: column;
+		&__msg {
+			font-size: 2rem;
+		}
+		&__admin {
+			font-size: 1.5rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		&__name {
+			font-size: 1rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
 	}
 	.product {
 		margin-bottom: 2rem;

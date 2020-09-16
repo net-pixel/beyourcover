@@ -46,8 +46,9 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to product_path
+      redirect_to category_path
     else
+      binding.pry
       render :edit
     end
   end
