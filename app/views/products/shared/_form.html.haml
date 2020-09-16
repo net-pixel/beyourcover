@@ -133,5 +133,4 @@
           = f.submit "更新する", title: "商品を更新する", class: 'btn-default btn-sns'
           = link_to product_path(@product), method: :delete, data: { confirm: '削除しますか？' } do
             %input#product_delete{type: "button", value: "この商品を削除", title: "商品を削除", class: 'btn-default btn-sns'}
-      .backpage
-        %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'btn-default btn-sns'}
+      %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'btn-default btn-sns'}
