@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: :show
+  before_action :set_cart
 
   def index
     @parents = Category.where(ancestry: nil)
@@ -20,5 +21,9 @@ class CategoriesController < ApplicationController
 
   def set_category
     @category = Category.find(params[:id])
+  end
+
+  def set_cart
+    @cart = current_cart
   end
 end

@@ -1,0 +1,45 @@
+= render 'layouts/navbar'
+.space
+.checkout
+  .checkout__title
+    My Cart
+  - if @cart_details.count == 0
+    .checkout__empty
+      No Items...
+    .backpage
+      %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'}
+  - else
+    - @cart_details.each do |cart_detail|
+      .checkout__product
+        .checkout__product__image.col-md-3.col-12
+          = image_tag cart_detail.product.images[0].item.url, width: 120, height: 150
+        .checkout__product__details.col-md-9.col-12
+          .checkout__product__details__text.col-sm-6.col-12
+            %p
+              商品名：
+              = cart_detail.product.name
+            %p
+              カテゴリー：
+              = cart_detail.product.category.name
+            %p
+              ブランド：
+              = cart_detail.product.brand
+          .checkout__product__details__quantity.col-sm-3.col-12
+            %p
+              数量：
+              = form_with url: cart_detail_path(cart_detail), method: :patch, local: true do |f|
+                - if cart_detail.product.stock > 1
+                  = f.number_field :quantity ,placeholder: "#{cart_detail.quantity}", value: "#{cart_detail.quantity}", min: 1, max: cart_detail.product.stock, class: "cart-quantity"
+                  = f.submit "変更", {class: "cart-edit"}
+                - else
+                  = cart_detail.product.stock
+                  ラスト
+          .checkout__product__details__price.col-sm-3.col-12
+            %p
+              小計：
+              = "¥#{cart_detail.total_price.to_s(:delimited, delimiter: ',')}"
+            = button_to '削除', cart_detail_path(cart_detail), method: :delete, data: { confirm: '削除しますか?' }, class: "cart-delete"
+    .checkout__total
+      = "合計 : ¥#{(@cart.total_price.to_s(:delimited, delimiter: ','))}"
+    .backpage
+      %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'}

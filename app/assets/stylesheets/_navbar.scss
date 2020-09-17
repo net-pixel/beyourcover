@@ -43,8 +43,20 @@ header{
   .fas.fa-search {
     color: white;
     text-decoration: none;
-    font-size: 1.5em;
-    margin-left: 30px;
+    font-size: 1.4em;
+    margin-left: 10px;
+    transform: translateY(11%);
+  }
+}
+.cart-head-btn {
+  display: flex;
+  line-height: 70px;
+  margin-right: 10px;
+  .fas.fa-shopping-cart {
+    color: white;
+    text-decoration: none;
+    font-size: 1.4em;
+    margin-left: 10px;
     transform: translateY(11%);
   }
 }
@@ -313,3 +325,25 @@ header{
 }
 /* @media screen and (max-width:770px)終了 */
 
+@media screen and (max-width:350px) {
+  #menu {
+    width: 27px;
+  }
+  .search-head-btn {
+    margin-right: 20px;
+    .fas.fa-search {
+      font-size: 1.2em;
+      margin-left: 5px;
+    }
+  }
+  .cart-head-btn {
+    margin-right: 5px;
+    .fas.fa-shopping-cart {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2em;
+      margin-left: 5px;
+    }
+  }
+  
+}

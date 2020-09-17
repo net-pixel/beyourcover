@@ -13,38 +13,47 @@
               - @product.images.each_with_index do |image|
                 = image_tag image.item.url, class: "subImg"
         .showMain__content__topContent__itemBox__detail
-          .showMain__content__topContent__itemBox__detail__price
-            %span
-              = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
-            .showMain__content__topContent__itemBox__detail__price__subinfo
-              %span (税込)
-              %span 送料
-              = @product.postage
-          .showMain__content__topContent__itemBox__detail__itemDetail
-            = @product.detail
-          .showMain__content__topContent__itemBox__detail__itemDetail
-            カテゴリー：
-            %span
-            = @product.category.name
-          .showMain__content__topContent__itemBox__detail__itemDetail
-            ブランド：
-            %span
-            = @product.brand
-          .showMain__content__topContent__itemBox__detail__itemDetail
-            個数：
-            %span
-            = @product.brand
-          .showMain__content__topContent__itemBox__detail__btn
-            - if @product.stock == 0
-              .showMain__content__topContent__itemBox__detail__btn__soldOut
+          = form_with url: add_product_carts_path, local: true do |c|
+            .showMain__content__topContent__itemBox__detail__price
+              %span
+                = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
+              .showMain__content__topContent__itemBox__detail__price__subinfo
+                %span (税込)
+                %span 送料
+                = @product.postage
+            .showMain__content__topContent__itemBox__detail__itemDetail
+              = @product.detail
+            .showMain__content__topContent__itemBox__detail__itemDetail
+              カテゴリー：
+              %span
+              = @product.category.name
+            .showMain__content__topContent__itemBox__detail__itemDetail
+              ブランド：
+              %span
+              = @product.brand
+            .showMain__content__topContent__itemBox__detail__itemDetail
+              - if @product.stock > 0
+                Available
+                -# 在庫：
+                -# = @product.stock
+              - else
                 SOLD OUT
-            - elsif user_signed_in? && current_user.id != @product.user_id
-              .showMain__content__topContent__itemBox__bdetail__tn__purchaseBtn
-                = link_to new_product_buyer_path(@product.id) do
-                  購入画面に進む
-            - elsif user_signed_in? && current_user.id == @product.user_id
-              .showMain__content__topContent__itemBox__detail__btn__purchaseBtn 出品中
-            - else
-              .showMain__content__topContent__itemBox__detail__btn__purchaseBtn
-                = link_to user_session_path do
-                  購入画面に進む
+            .showMain__content__topContent__itemBox__detail__quantity
+              購入数量：
+              = c.select :quantity, stock_array_maker(@stock), {},class: "select-quantity"
+            .showMain__content__topContent__itemBox__detail__btn
+              - if @product.stock == 0
+                .showMain__content__topContent__itemBox__detail__btn__soldOut
+                  SOLD OUT
+              - elsif user_signed_in? && current_user.id != @product.user_id
+                = c.hidden_field :product_id, value: @product.id
+                = c.hidden_field :cart_id, value: @cart.id
+                = c.submit "カートに追加", {class: "showMain__content__topContent__itemBox__detail__btn__purchaseBtn", id: "addToCart"}
+              - elsif user_signed_in? && current_user.admin?
+                = link_to "Edit", edit_product_path(@product), class: "showMain__content__topContent__itemBox__detail__btn__purchaseBtn"
+              - else
+                = c.hidden_field :product_id, value: @product.id
+                = c.hidden_field :cart_id, value: @cart.id
+                = c.submit "カートに追加", {class: "showMain__content__topContent__itemBox__detail__btn__purchaseBtn", id: "addToCart"}
+            .showMain__content__topContent__itemBox__detail__btn
+              %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'}

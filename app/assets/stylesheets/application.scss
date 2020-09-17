@@ -52,6 +52,10 @@ background-color: var(--primary-color)!important;
 font-family: var(--M-PLUS-1-p);
 }
 
+.space {
+  padding-top: 70px;
+}
+
 footer {
   .footer-bottom {
       padding: 30px;
@@ -81,6 +85,11 @@ footer {
   }
 }
 
+.backpage {
+  max-width: 400px;
+  width: 100%;
+}
+
 .social {
   width: 100%;
   cursor: pointer;
@@ -100,4 +109,17 @@ footer {
 .social a{
 	padding-right: 4%;
 	cursor: pointer;
+}
+
+.container-fluid {
+  max-width: 1400px;
+}
+
+.showMain {
+  max-width: 1400px;
+}
+
+.checkout {
+  max-width: 1400px;
+  margin: auto;
 }

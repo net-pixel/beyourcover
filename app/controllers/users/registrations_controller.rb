@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]　/デフォルト記載
   # before_action :configure_account_update_params, only: [:update]　/デフォルト記載
+  before_action :set_cart
 
   def new
     @user = User.new
@@ -55,5 +56,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def address_params
     params.require(:address).permit(:post_code, :prefecture_id, :city, :address, :building, :phone_number )
+  end
+
+  def set_cart
+    @cart = current_cart
   end
 end
