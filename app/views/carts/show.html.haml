@@ -36,10 +36,10 @@
                   ラスト
           .checkout__product__details__price.col-sm-3.col-12
             %p
-              金額：
+              小計：
               = "¥#{cart_detail.total_price.to_s(:delimited, delimiter: ',')}"
             = button_to '削除', cart_detail_path(cart_detail), method: :delete, data: { confirm: '削除しますか?' }, class: "cart-delete"
-    .cart__content__total
+    .checkout__total
       = "合計 : ¥#{(@cart.total_price.to_s(:delimited, delimiter: ','))}"
     .backpage
       %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'}

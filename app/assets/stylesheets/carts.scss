@@ -10,7 +10,7 @@
     align-items: center;
     display: flex;
     margin: 20px 0;
-    font-size: 1.8rem;
+    font-size: 2rem;
     border-radius: .2em;
     width: 100%;
     box-shadow: -12px -12px 12px 0 rgba(255,255,255,1),
@@ -30,6 +30,17 @@
       margin-top: 5px;
       display: flex;
     }
+  }
+  &__total {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: 20px 0;
+    font-size: 1.8rem;
+    border-radius: .2em;
+    width: 100%;
+    box-shadow: -12px -12px 12px 0 rgba(255,255,255,1),
+    12px 12px 12px 0 rgba(0,0,0,.3);
   }
 }
 
