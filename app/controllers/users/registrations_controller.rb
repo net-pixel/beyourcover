@@ -19,6 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.valid?
       session["devise.regist_data"] = { user: @user.attributes }
       session["devise.regist_data"][:user]["password"] = params[:user][:password]
+      session["devise.regist_data"][:user]["password_confirmation"] = params[:user][:password_confirmation]
       render :new_address
       return
     else
@@ -46,6 +47,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
       return
     end
   end
+  
+  def edit
+    @user = User.find(current_user.id)
+  end
+  
+  def update
+    @user = User.find(current_user.id)
+    if current_user.update(user_params)
+      bypass_sign_in(current_user)
+      redirect_to root_path
+    else
+      return
+    end
+  end
 
   protected
 
@@ -60,5 +75,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def set_cart
     @cart = current_cart
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end
