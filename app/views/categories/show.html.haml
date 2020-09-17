@@ -48,3 +48,5 @@
                   = p.name
                 .product__price
                   = "#{p.price.to_s(:delimited, delimiter: ',')}円"
+    .showMain__content__topContent__itemBox__detail__btn
+      %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'}

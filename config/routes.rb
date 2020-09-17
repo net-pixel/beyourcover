@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   resources :carts, only: [:show, :destroy] do
     collection do
       post 'add_product'
-      post 'update_product'
+      patch 'update_product'
     end
   end
 

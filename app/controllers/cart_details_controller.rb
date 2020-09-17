@@ -16,4 +16,8 @@ class CartDetailsController < ApplicationController
   def set_cart_detail
     @cart_detail = CartDetail.find_by(params[:id])
   end
+
+  def cart_detail_params
+    params.require(:cart_detail).permit(:product_id, :cart_id)
+  end
 end

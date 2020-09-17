@@ -7,7 +7,7 @@
     .checkout__empty
       No Items...
     .backpage
-      %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'btn-default btn-sns'}
+      %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'}
   - else
     - @cart_details.each do |cart_detail|
       .checkout__product
@@ -28,12 +28,14 @@
             %p
               数量：
               = form_with url: cart_detail_path(cart_detail), method: :patch, local: true do |f|
-                - if cart_detail.product.stock > 1
-                  = f.number_field :quantity ,placeholder: "#{cart_detail.quantity}", value: "#{cart_detail.quantity}", min: 1, max: cart_detail.product.stock, class: "cart-quantity"
-                  = f.submit "変更", {class: "cart-edit"}
-                - else
-                  = cart_detail.product.stock
-                  ラスト
+                = cart_detail.id
+                = cart_detail.product.id
+                = f.number_field :quantity ,placeholder: "#{cart_detail.quantity}", value: "#{cart_detail.quantity}", min: 1, max: cart_detail.product.stock, class: "cart-quantity"
+                = f.submit "変更", {class: "cart-edit"}
+                -# - if cart_detail.product.stock > 1
+                -# - else
+                -#   = cart_detail.product.stock
+                -#   ラスト
           .checkout__product__details__price.col-sm-3.col-12
             %p
               金額：
