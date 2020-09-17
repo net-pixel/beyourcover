@@ -34,6 +34,8 @@
             .showMain__content__topContent__itemBox__detail__itemDetail
               - if @product.stock > 0
                 Available
+                -# 在庫：
+                -# = @product.stock
               - else
                 SOLD OUT
             .showMain__content__topContent__itemBox__detail__quantity
