@@ -1,12 +1,15 @@
 = render 'layouts/navbar'
 .space
-= form_for(@user, url: user_registration_path, html: {method: 'PATCH', class: "user_form-field"}) do |f|
+-# = form_for(@user, url: user_registration_path, html: {method: 'PATCH', class: "user_form-field"}) do |f|
+= form_with model: @user, url: user_registration_path, class: "user_form-field", local: true do |f|
   .user-form
     .user-form__field
       %h2.body_head 登録情報編集
       - if @user.errors.any?
         %span.err_message
           = I18n.t("errors.messages.not_saved")
+          - @user.errors.full_messages.each do |message|
+            %li= message
       .user-form__field__box
         .user-form__field__box__group
           .user-form__field__box__group__head
