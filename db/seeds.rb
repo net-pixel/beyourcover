@@ -26,6 +26,26 @@ Address.create!(
   phone_number: "09066666666",
   user_id: 1,
 )
+User.create!(
+  name: "たろ",
+  email: "taro@example.com",
+  password: 'password',
+  password_confirmation: "password",
+  last_name: "山田",
+  first_name: "太郎",
+  last_kana: "ヤマダ",
+  first_kana: "タロウ",
+  admin: false
+)
+Address.create!(
+  post_code: "123-4567",
+  prefecture_id: 1,
+  city: '渋谷区',
+  address: "道玄坂2-3-1",
+  building: "フォンティスビル7F",
+  phone_number: "09033332222",
+  user_id: 2,
+)
 
 # 10.times do |i|
 #   product = Product.new
