@@ -1,2 +1,50 @@
 = render 'layouts/navbar'
 .space
+
+.cardNew
+  .title 
+    クレジットカード情報入力
+  .cardForm
+    = form_with model: @card, id: "form" do |f|
+      .cardForm__number
+        = f.label :カード番号, class: "cardForm__number__title"
+        %span.must_check 必須
+      .cardForm__field
+        = f.text_field :card_number, id: "card_number", placeholder: "半角数字のみ", class: "form-group__input", maxlength: 16
+      .cardForm__image
+        %li
+          = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__visa'
+        %li
+          = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__masterCard'
+        %li
+          = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__jcb'
+        %li
+          = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__americanExpress'
+        %li
+          = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__dinersclub'
+        %li
+          = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?238737266', class: 'container__inner__content__singleContent__formGroup__signupCardList__discover'
+
+      .cardForm__expirationdate
+        .cardForm__expirationdate__details
+          = f.label :有効期限
+          %span.must_check 必須
+          %br
+        .cardForm__expirationdate__choice
+          .cardForm__expirationdate__choice__month
+            = f.select :expiration_month, options_for_select(["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]), {}, {id: "exp_month", name: "exp_month", type: "text"}
+            = f.label :月, class: "cardForm__expirationdate__choice__month__label"
+          .cardForm__expirationdate__choice__year
+            = f.select :expiration_year, options_for_select((2020..2030)), {}, {id: "exp_year", name: "exp_year", type: "text"}
+            = f.label :年, class: "cardForm__expirationdate__choice__year__label"
+      .cardForm__securitycode
+        .cardForm__securitycode__details
+          .cardForm__securitycode__details__title
+            = f.label :セキュリティコード, class: "label"
+            %span.must_check 必須
+          .cardForm__securitycode__details__field
+            = f.text_field :cvc,  id: "cvc", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4"
+          .cardForm__securitycode__details__hatena
+            = link_to "カード背面の番号とは?", "#", class: "cardForm__securitycode__details__hatena__link"
+      #card_token
+        = f.submit "登録する", id: "token_submit", url: cards_path, method: :post

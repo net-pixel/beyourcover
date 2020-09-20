@@ -3,3 +3,4 @@
 //= link application.js
 //= link products.js
 //= link categories.js
+//= link cards.js

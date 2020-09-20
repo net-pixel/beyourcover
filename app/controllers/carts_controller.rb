@@ -13,11 +13,6 @@ class CartsController < ApplicationController
     @cart_detail.save!
     redirect_to current_cart
   end
-  
-  def update_product
-    @cart_detail.update(quantity: params[:quantity].to_i)
-    redirect_to current_cart
-  end
 
   def destroy
     @cart_detail.destroy

@@ -1,8 +1,17 @@
 = render 'layouts/navbar'
 .space
 
-.user-card
-  .user-card__head
-    支払い方法
-  .user-card__main
-    -
+.payment
+  .payment__content
+    .payment__content__title
+      カード情報
+    .payment__content__box
+      .payment__content__box__cardImage
+        = image_tag "#{@card_src}", alt: @card_brand,  width: 40, height: 28
+      .payment__content__box__details
+        .payment__content__box__details__cardNumber
+          = "カード番号：**** **** **** " + @card_info.last4
+        .payment__content____boxdetails__cardMMYY
+          = "有効期限：" + @exp_month + " / " + @exp_year
+  .payment__cardDelete
+    = button_to "削除する", card_path(@card.id), {method: :delete, id: 'charge-form', name: "inputForm", class: "payment__cardDelete__deleteBtn"}

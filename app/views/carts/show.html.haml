@@ -41,5 +41,13 @@
             = button_to '削除', cart_detail_path(cart_detail), method: :delete, data: { confirm: '削除しますか?' }, class: "cart-delete"
     .checkout__total
       = "合計 : ¥#{(@cart.total_price.to_s(:delimited, delimiter: ','))}"
-    .backpage
-      %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'}
+    - if user_signed_in? 
+      .showMain__content__topContent__itemBox__detail__btn
+        = link_to "レジに進む", new_order_path, class: "showMain__content__topContent__itemBox__detail__btn__purchaseBtn"
+    - else
+      .showMain__content__topContent__itemBox__detail__btn
+        = link_to "新規登録", new_user_registration_path, class:'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'
+      .showMain__content__topContent__itemBox__detail__btn
+        = link_to "ログイン", new_user_session_path, class:'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'
+    .showMain__content__topContent__itemBox__detail__btn
+      = link_to "他の商品を見る", root_path, class: "showMain__content__topContent__itemBox__detail__btn__purchaseBtn"

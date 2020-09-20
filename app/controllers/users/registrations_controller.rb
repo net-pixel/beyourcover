@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]　/デフォルト記載
   # before_action :configure_account_update_params, only: [:update]　/デフォルト記載
+  before_action :set_address, only: [:show, :edit, :update, :destroy]
   before_action :set_cart
 
   def new
@@ -27,6 +28,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def edit
+    @user = User.find(current_user.id)
+  end
+  
+  def update
+    @user = User.find(current_user.id)
+    if current_user.update(user_params)
+      bypass_sign_in(current_user)
+      redirect_to root_path
+    else
+      return
+    end
+  end
+
   def new_address
     @user = User.new(session["devise.regist_data"]["user"])
     @address = Address.new
@@ -48,18 +63,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
   
-  def edit
-    @user = User.find(current_user.id)
+  def edit_address
   end
-  
-  def update
-    @user = User.find(current_user.id)
-    if current_user.update(user_params)
-      bypass_sign_in(current_user)
-      redirect_to root_path
-    else
-      return
-    end
+
+  def update_address
+    @address.update(address_params)
+    flash[:notice] = '住所情報を更新しました'
+    redirect_to new_order_path
   end
 
   protected
@@ -70,7 +80,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def address_params
-    params.require(:address).permit(:post_code, :prefecture_id, :city, :address, :building, :phone_number )
+    params.require(:address).permit(:destination_first, :destination_last, :destination_first_kana, :destination_last_kana, :post_code, :prefecture_id, :city, :address, :building, :phone_number )
   end
 
   def set_cart
@@ -79,5 +89,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def set_address
+    @address = Address.find(current_user.id)
   end
 end

@@ -1,0 +1,33 @@
+.order
+  .order__box
+    .order__box__title
+      Thank you for choosing BeYourCover
+    .order__box__body
+      お届け先
+      .order__box__body__text
+        = "氏名 : #{@order.address.destination_last + @order.address.destination_first}"
+      .order__box__body__text
+        = "ふりがな : #{@order.address.destination_last_kana + @order.address.destination_first_kana}"
+      .order__box__body__text
+        = "Eメール : #{@order.user.email}"
+      .order__box__body__text
+        = "郵便番号 : #{@order.address.post_code}"
+      - if @order.address.building.present?
+        .order__box__body__text
+          = "住所 : #{@order.address.prefecture.name + @order.address.city + @order.address.address + @order.address.building}"
+      - else
+        .order__box__body__text
+          = "住所 : #{@order.address.prefecture.name + @order.address.city + @order.address.address}"
+      .order__box__body
+        購入商品
+      - @order.order_details.each do |detail|
+        -# .confirmation__box__body__text
+        -#   = "受付時間 : #{@order.created_at.strftime('%Y/%m/%d/ %H:%M:%S')}"
+        -# .confirmation__box__body__text
+        -#   = "オーダー番号 : #{@order.id}"
+        .order__box__body__text
+          = "#{detail.product.name}  × #{detail.quantity} = ¥#{(detail.product.price*detail.quantity).to_s(:delimited, delimiter: ',')}"
+      .order__box__body__text
+        = "お支払い合計 : ¥#{(@order.price.to_s(:delimited, delimiter: ','))}"
+    .showMain__content__topContent__itemBox__detail__btn
+      = link_to "トップページへ戻る",root_path, data: {"turbolinks"=>false}, class: "showMain__content__topContent__itemBox__detail__btn__purchaseBtn"

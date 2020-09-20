@@ -3,6 +3,8 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Beyourcover
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
+    = include_gon(init: true)
     = csrf_meta_tags
     = csp_meta_tag
     / mobile
@@ -20,3 +22,4 @@
       = javascript_include_tag 'application'
       = javascript_include_tag 'products'
       = javascript_include_tag 'categories'
+      = javascript_include_tag 'cards'

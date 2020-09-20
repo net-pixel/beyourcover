@@ -18,6 +18,10 @@ User.create!(
   admin: true
 )
 Address.create!(
+  destination_last: "鈴木",
+  destination_first: "太郎",
+  destination_last_kana: "スズキ",
+  destination_first_kana: "タロウ",
   post_code: "001-0000",
   prefecture_id: 1,
   city: '渋谷区',
@@ -38,6 +42,10 @@ User.create!(
   admin: false
 )
 Address.create!(
+  destination_last: "山田",
+  destination_first: "太郎",
+  destination_last_kana: "ヤマダ",
+  destination_first_kana: "タロウ",
   post_code: "123-4567",
   prefecture_id: 1,
   city: '渋谷区',

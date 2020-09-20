@@ -1,16 +1,9 @@
 = render 'layouts/navbar'
 .space
-= form_for(@address, url: addresses_path, html: {method: 'POST'}) do |f|
+= form_for(@address, url: edit_addresses_path, html: {method: 'PATCH'}) do |f|
   .user-form
-    .user-form__head
-      %li.user-form__head__progress.progress-active.progress-active__bar
-        会員情報
-      %li.user-form__head__progress.progress-active
-        住所・TEL
-      %li.user-form__head__progress__done
-        完了
     .user-form__field
-      %h2.body_head お届け先情報入力
+      %h2.body_head お届け先情報編集
       - if @address.errors.any?
         %span.err_message
           = I18n.t("errors.messages.not_saved")
@@ -110,4 +103,4 @@
           .user-form__field__box__group__head
             %a
               ※本人情報は正しく入力してください。
-        = f.submit "次へ進む", class: 'btn-default btn-sns'
+        = f.submit "更新する", class: 'btn-default btn-sns'
