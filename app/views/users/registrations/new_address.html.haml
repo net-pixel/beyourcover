@@ -10,11 +10,41 @@
       %li.user-form__head__progress__done
         完了
     .user-form__field
-      %h2.body_head 住所・電話番号入力
+      %h2.body_head お届け先情報入力
       - if @address.errors.any?
         %span.err_message
           = I18n.t("errors.messages.not_saved")
       .user-form__field__box
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              お届け先お名前（全角）
+            %span.mandatory
+              必須
+            %br
+            - if @address.errors.any?
+              %span.err_message
+                =  @address.errors.full_messages_for(:destination_last).shift
+                %br
+                =  @address.errors.full_messages_for(:destination_first).shift
+          .namebox
+            = f.text_field :destination_last, class: "user-form__field__box__group__form nmform", placeholder: "例）山田"
+            = f.text_field :destination_first, class: "user-form__field__box__group__form nmform", placeholder: "例）太郎"
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              お届け先お名前カナ（全角）
+            %span.mandatory
+              必須
+            %br
+            - if @address.errors.any?
+              %span.err_message
+                =  @address.errors.full_messages_for(:destination_last_kana).shift
+                %br
+                =  @address.errors.full_messages_for(:destination_first_kana).shift
+          .namebox
+            = f.text_field :destination_last_kana, class: "user-form__field__box__group__form nmform", placeholder: "例）ヤマダ"
+            = f.text_field :destination_first_kana, class: "user-form__field__box__group__form nmform", placeholder: "例）タロウ"
         .user-form__field__box__group
           .user-form__field__box__group__head
             %label
@@ -80,4 +110,4 @@
           .user-form__field__box__group__head
             %a
               ※本人情報は正しく入力してください。
-        = f.submit "次へ進む", class: 'btn-default btn-sns'
+        = f.submit "次へ進む", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'

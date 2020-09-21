@@ -1,0 +1,20 @@
+= render 'layouts/navbar'
+.space
+.orderDetails
+  .orderDetails__content
+    .orderDetails__content__title
+      注文履歴詳細
+    %table.orderDetails__content__table{border: 2}
+      %thead
+        %tr
+          %th 購入日
+          %th 商品
+          %th 数量
+          %th 金額(税込)
+        %tbody
+        - @orderDetails.each do |detail|
+          %tr
+            %td= detail.created_at.strftime('%Y/%m/%d') 
+            %td= link_to "#{detail.product.namejap}", product_path(detail.product.id)
+            %td= detail.quantity
+            %td= "¥ #{convertToJPY(detail.product.price)}"

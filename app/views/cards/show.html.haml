@@ -1,8 +1,17 @@
 = render 'layouts/navbar'
 .space
 
-.user-card
-  .user-card__head
-    支払い方法
-  .user-card__main
-    -
+.order
+  .order__box
+    カード情報
+    .order__box__card
+    .order__box__card__text
+      = image_tag "#{@card_src}", alt: @card_brand,  width: 40, height: 28
+    .order__box__card__text
+      = "カード番号：**** **** **** " + @card_info.last4
+    .order__box__card__text
+      = "有効期限：" + @exp_month + " / " + @exp_year
+      .order__box__card__text__btn
+        = button_to "削除する", card_path(@card.id), {method: :delete, id: 'charge-form', name: "inputForm", class: "change-btn"}
+  .showMain__content__topContent__itemBox__detail__btn        
+    %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'}

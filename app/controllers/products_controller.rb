@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
     @products = Product.includes(:images).order("created_at DESC")
     if user_signed_in?
       @user = User.find(current_user.id)
+      @address = Address.find(current_user.id)
     end
     @images = Image.limit(3).order(id: "DESC")
     @iPhone11 = Category.name
@@ -55,6 +56,7 @@ class ProductsController < ApplicationController
   def show
     if user_signed_in?
       @user = User.find(current_user.id)
+      @address = Address.find(current_user.id)
     end
     @images = @product.images
     @category = @product.category

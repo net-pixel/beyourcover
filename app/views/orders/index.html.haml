@@ -1,0 +1,30 @@
+-# = render layout: "users/show" do
+-#   .orderedItems
+-#     .orderedItems__content
+-#       .orderedItems__content__title
+-#         注文履歴
+-#       - if @orders.count == 0
+-#         .orderedItems__content__nothing
+-#           ご注文履歴はございません
+-#       - else
+-#         %table.orderedItems__content__table{border: 2}
+-#           %thead
+-#             %tr
+-#               %th 購入日
+-#               %th 注文番号
+-#               %th 状況
+-#               %th 購入商品
+-#               %th 合計金額(税込)
+-#             %tbody
+-#               - @orders.each do |order|
+-#               - product = Product.find(order.order_details.to_a[0][:product_id])
+-#                 %tr
+-#                   %td= order.created_at.strftime('%Y/%m/%d')
+-#                   %td= order.id
+-#                   %td= order.status
+-#                   %td
+-#                     - if order.order_details.to_a.size == 1
+-#                       = link_to "#{product.namejap}", order_details_path(order_id: order.id)
+-#                     -else 
+-#                       = link_to "#{product.namejap} など #{order.order_details.to_a.size}件", order_details_path(order_id: order.id)
+-#                   -# %td= "¥ #{convertToJPY(order.price)}"

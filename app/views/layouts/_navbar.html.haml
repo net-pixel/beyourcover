@@ -36,6 +36,12 @@
                         - if current_user.admin
                           = link_to "New Product", new_product_path, class: 'dds__select'
                         = link_to "Account Settings", edit_user_registration_path, class: 'dds__select'
+                        - if @address.present?
+                          = link_to "Address Settings", edit_addresses_path(@address.id), class: "dds__select"
+                        - if @card.present?
+                          = link_to "Card Setting", new_card_path, class: "dds__select"
+                        - else
+                          = link_to "Card Setting", new_card_path, class: "dds__select"
                         = link_to "Logout", destroy_user_session_path, class:'dds__select', method: :delete
                 - else
                   .mainnav

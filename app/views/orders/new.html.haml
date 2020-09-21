@@ -1,0 +1,58 @@
+= render 'layouts/navbar'
+.order
+  .order__box
+    .order__box__title
+      CHECK OUT
+    .order__box__body
+      .order__box__subtitle
+        お届け先住所
+      - if @address.present?
+        .order__box__body__text
+          = "〒 #{@address.post_code}"
+        .order__box__body__text
+          = @address.prefecture.name + @address.city + @address.address + @address.building
+        .order__box__body__text
+          = @address.destination_last + @address.destination_first
+        .order__box__body__text
+          = link_to "お届け先を変更", edit_addresses_path(@address.id), class: "change-btn"
+      - else
+        .order__box__body__text
+          = link_to "登録する", addresses_path, data: {"turbolinks"=>false}, class: "change-btn"
+    .order__box__card
+      登録カード
+      - if @card.present?
+        .order__box__card__text
+          = image_tag "#{@card_src}", width: 50, height: 40
+        .order__box__body__text
+          = "カード番号：**** **** **** " + @card_info.last4
+        .order__box__card__text
+          = "有効期限：" + @exp_month + " / " + @exp_year
+          .order__box__card__text__btn
+            = link_to "カードを変更", new_card_path, class: "change-btn"
+      - else
+        .order__box__card__text__btn
+          = link_to "登録する", new_card_path, class: "change-btn"
+    .order__box__product
+      .order__box__subtitle
+        ご注文内容
+      - @cart_details.each do |cart_detail|
+        .order__box__product__detail
+          .order__box__product__detail__pic
+            = image_tag cart_detail.product.images[0].item.url, width: 80, height: 100
+          .order__box__product__detail__text
+            .order__box__product__detail__text__line
+              = cart_detail.product.name
+            .order__box__product__detail__text__line
+              = "数量：#{cart_detail.quantity}"
+            .order__box__product__detail__text__line
+              = "小計：¥#{cart_detail.total_price.to_s(:delimited, delimiter: ',')}"
+    .order__box__total
+      = "合計 : ¥#{(@cart.total_price.to_s(:delimited, delimiter: ','))}"
+    .showMain__content__topContent__itemBox__detail__btn
+      - if @card.present? && @address.present?
+        = button_to "購入する", orders_path, class: "showMain__content__topContent__itemBox__detail__btn__purchaseBtn", params: {user_id: current_user.id, address_id: @address.id, card_id: @card.id, price: @cart.total_price, quantity: @cart.total_number}
+      - else
+        .showMain__content__topContent__itemBox__detail__btn__purchaseBtn
+          ※ 購入には送付先住所・カード情報の登録が必要です
+  .showMain__content__topContent__itemBox__detail__btn
+    %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'}

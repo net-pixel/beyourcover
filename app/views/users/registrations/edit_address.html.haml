@@ -1,0 +1,108 @@
+= render 'layouts/navbar'
+.space
+= form_for(@address, url: edit_addresses_path, html: {method: 'PATCH'}) do |f|
+  .user-form
+    .user-form__field
+      %h2.body_head お届け先情報編集
+      - if @address.errors.any?
+        %span.err_message
+          = I18n.t("errors.messages.not_saved")
+      .user-form__field__box
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              お届け先お名前（全角）
+            %span.mandatory
+              必須
+            %br
+            - if @address.errors.any?
+              %span.err_message
+                =  @address.errors.full_messages_for(:destination_last).shift
+                %br
+                =  @address.errors.full_messages_for(:destination_first).shift
+          .namebox
+            = f.text_field :destination_last, class: "user-form__field__box__group__form nmform", placeholder: "例）山田"
+            = f.text_field :destination_first, class: "user-form__field__box__group__form nmform", placeholder: "例）太郎"
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              お届け先お名前カナ（全角）
+            %span.mandatory
+              必須
+            %br
+            - if @address.errors.any?
+              %span.err_message
+                =  @address.errors.full_messages_for(:destination_last_kana).shift
+                %br
+                =  @address.errors.full_messages_for(:destination_first_kana).shift
+          .namebox
+            = f.text_field :destination_last_kana, class: "user-form__field__box__group__form nmform", placeholder: "例）ヤマダ"
+            = f.text_field :destination_first_kana, class: "user-form__field__box__group__form nmform", placeholder: "例）タロウ"
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              郵便番号
+            %span.mandatory
+              必須
+            %br
+            - if @address.errors.any?
+              %span.err_message
+                =  @address.errors.full_messages_for(:post_code).shift
+            = f.text_field :post_code, class: "user-form__field__box__group__form", placeholder: "例)123-4567", maxlength: '8'
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              都道府県
+            %span.mandatory
+              必須
+            %br
+            - if @address.errors.any?
+              %span.err_message
+                =  @address.errors.full_messages_for(:prefecture_id).shift
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: "user-form__field__box__group__form"}
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              市区町村
+            %span.mandatory
+              必須
+            %br
+            - if @address.errors.any?
+              %span.err_message
+                =  @address.errors.full_messages_for(:city).shift
+            = f.text_field :city, class: "user-form__field__box__group__form", placeholder: "市区町村を入力ください"
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              番地
+            %span.mandatory
+              必須
+            %br
+            - if @address.errors.any?
+              %span.err_message
+                =  @address.errors.full_messages_for(:address).shift
+            = f.text_field :address, class: "user-form__field__box__group__form", placeholder: "番地を入力ください"
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              建物名
+            = f.text_field :building, class: "user-form__field__box__group__form", placeholder: "建物名を入力ください"
+      .user-form__field__box
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %label
+              電話番号
+            %span.mandatory
+              必須
+            %br
+            - if @address.errors.any?
+              %span.err_message
+                =  @address.errors.full_messages_for(:phone_number).shift
+            = f.text_field :phone_number, class: "user-form__field__box__group__form", placeholder: "ハイフンなし10~11桁"
+        .user-form__field__box__group
+          .user-form__field__box__group__head
+            %a
+              ※本人情報は正しく入力してください。
+        = f.submit "更新する", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'
+    
+        %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'}

@@ -1,3 +1,145 @@
-// Place all the styles related to the cards controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.card {
+  width: 100%;
+  padding: 80px 0;
+  background-color: rgb(246, 246, 246);
+  &__box {
+    margin: 80px 200px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+		border-radius: .5em;
+    box-shadow: -12px -12px 12px 0 rgba(255,255,255,1),
+    12px 12px 12px 0 rgba(0,0,0,.3);
+    &__title {
+      font-size: 2rem;
+    }
+    &__body {
+      margin-top: 30px;
+      margin: 0;
+      &__form {
+        margin: 10px 0;
+        &__QA {
+          text-decoration: none;
+          color: black;
+        }
+        &__cvc {
+          width: 200px;
+          .cvc {
+            width: 200px;
+            font-size: 1rem;
+          }
+        }
+        input {
+          width: 200px;
+        }
+      }
+      &__expiration {
+        display: flex;
+        &__form {
+          margin-right: 10px;
+          font-size: 1rem;
+        }
+      }
+      &__image {
+        display: flex;
+        li {
+          list-style: none;
+          margin: 5px;
+        }
+        &__visa {
+          width: 49px;
+        }
+
+        &__masterCard {
+          width: 34px;
+        }
+
+        &__jcb {
+          width: 32px;
+        }
+
+        &__americanExpress {
+          width: 21px;
+        }
+
+        &__dinersclub {
+          width: 32px;
+        }
+
+        &__discover {
+          width: 32px;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width:800px) {
+  .card {
+    &__box {
+      margin: 80px;
+      &__title {
+        font-size: 1.8rem;
+      }
+      &__body {
+        font-size: 1.2rem;
+        &__form {
+          font-size: 1rem;
+          .cvc {
+            font-size: .9rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width:500px) {
+  .card {
+    padding: 50px 0 30px 0;
+    &__box {
+      margin: 20px;
+      &__title {
+        font-size: 1.1rem;
+      }
+      &__body {
+        font-size: 1rem;
+        &__form {
+          font-size: .9rem;
+          .cvc {
+            font-size: .9rem;
+          }
+        }
+        &__image {
+          li {
+            margin: 3px;
+          }
+          &__visa {
+            width: 44px;
+          }
+  
+          &__masterCard {
+            width: 29px;
+          }
+  
+          &__jcb {
+            width: 27px;
+          }
+  
+          &__americanExpress {
+            width: 16px;
+          }
+  
+          &__dinersclub {
+            width: 27px;
+          }
+  
+          &__discover {
+            width: 27px;
+          }
+        }
+      }
+    }
+  }
+}

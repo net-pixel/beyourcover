@@ -5,17 +5,16 @@ class CartsController < ApplicationController
 
   def show
     @cart_details = @cart.cart_details
+    if user_signed_in?
+      @user = User.find(current_user.id)
+      @address = Address.find(current_user.id)
+    end
   end
   
   def add_product
     @cart_detail = current_cart.cart_details.build(product_id: params[:product_id]) if @cart_detail.blank?
     @cart_detail.quantity += params[:quantity].to_i
     @cart_detail.save!
-    redirect_to current_cart
-  end
-  
-  def update_product
-    @cart_detail.update(quantity: params[:quantity].to_i)
     redirect_to current_cart
   end
 

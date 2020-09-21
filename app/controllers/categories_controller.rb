@@ -15,6 +15,11 @@ class CategoriesController < ApplicationController
     else
       @products = Product.includes(:images).order("created_at DESC").where(category_id: @category)
     end
+
+    if user_signed_in?
+      @user = User.find(current_user.id)
+      @address = Address.find(current_user.id)
+    end
   end
 
   private

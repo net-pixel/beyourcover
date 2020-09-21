@@ -1,0 +1,134 @@
+.order {
+  width: 100%;
+  padding: 80px 0;
+  background-color: rgb(246, 246, 246);
+  &__box {
+    margin: 80px 200px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+		border-radius: .5em;
+    box-shadow: -12px -12px 12px 0 rgba(255,255,255,1),
+		12px 12px 12px 0 rgba(0,0,0,.3);
+    &__title {
+      font-size: 2rem;
+    }
+    &__subtitle {
+      font-size: 1.5rem;
+    }
+    &__body {
+      margin-top: 30px;
+      margin: 0;
+      &__title {
+        font-size: 1.5rem;
+      }
+      &__text {
+        margin: 10px 0;
+      }
+    }
+    &__product {
+      margin-top: 20px;
+      &__detail {
+        display: flex;
+        &__text {
+          flex-direction: column;
+          margin-left: 30px;
+        }
+      }
+    }
+    &__card {
+      width: 300px;
+      margin: 20px auto 0 auto;
+      border-radius: .5em;
+      box-shadow: -12px -12px 12px 0 rgba(255,255,255,1),
+      12px 12px 12px 0 rgba(0,0,0,.3);
+      &__text {
+        // margin: 10px 0;
+        &__btn {
+          margin: 10px auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+    &__total {
+      margin: 0 auto;
+      font-size: 1.8rem;
+    }
+  }
+}
+
+a.change-btn {
+  border-radius: .2em;
+  box-shadow: -12px -12px 12px 0 rgba(255,255,255,1),
+  12px 12px 12px 0 rgba(0,0,0,.3);
+  line-height: 30px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+@media screen and (max-width:800px) {
+  .order {
+    &__box {
+      margin: 80px;
+      &__title {
+        font-size: 1.8rem;
+      }
+      &__subtitle {
+        font-size: 1.4rem;
+      }
+      &__body {
+        font-size: 1.2rem;
+        &__text {
+          font-size: 1rem;
+        }
+      }
+      &__product {
+        &__detail {
+          &__text {
+            font-size: 1rem;
+          }
+        }
+      }
+      &__card {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width:500px) {
+  .order {
+    padding: 50px 0 30px 0;
+    &__box {
+      margin: 20px;
+      &__title {
+        font-size: 1.5rem;
+      }
+      &__subtitle {
+        font-size: 1.2rem;
+      }
+      &__body {
+        font-size: 1.1rem;
+        &__text {
+          font-size: .9rem;
+        }
+      }
+      &__product {
+        &__detail {
+          &__text {
+            font-size: .9rem;
+          }
+        }
+      }
+      &__card {
+        width: 250px;
+        font-size: .9rem;
+      }
+    }
+  }
+}

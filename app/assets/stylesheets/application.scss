@@ -57,11 +57,12 @@ font-family: var(--M-PLUS-1-p);
 }
 
 footer {
+  // margin-top: 30px;
   .footer-bottom {
-      padding: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -85,9 +86,10 @@ footer {
   }
 }
 
-.backpage {
+.button {
   max-width: 400px;
   width: 100%;
+  margin: 0 auto;
 }
 
 .social {
@@ -122,4 +124,11 @@ footer {
 .checkout {
   max-width: 1400px;
   margin: auto;
+}
+
+@media screen and (max-width:800px) {
+  .button {
+    padding: 0 20px;
+
+  }
 }
