@@ -103,4 +103,6 @@
           .user-form__field__box__group__head
             %a
               ※本人情報は正しく入力してください。
-        = f.submit "更新する", class: 'btn-default btn-sns'
+        = f.submit "更新する", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'
+    
+        %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'}

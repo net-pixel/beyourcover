@@ -10,9 +10,6 @@ Rails.application.routes.draw do
     get "edit_addresses", to: "users/registrations#edit_address"
     patch "edit_addresses", to: "users/registrations#update_address"
   end
-  # devise_scope :user do
-  #   get "users/profile/:id", to: "users/sessions#show", as: "profile"
-  # end
 
   resources :products do
     collection do

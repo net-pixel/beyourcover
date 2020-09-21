@@ -17,7 +17,7 @@
           = link_to "お届け先を変更", edit_addresses_path(@address.id), class: "change-btn"
       - else
         .order__box__body__text
-          = link_to "登録する", new_address_path, data: {"turbolinks"=>false}, class: "change-btn"
+          = link_to "登録する", addresses_path, data: {"turbolinks"=>false}, class: "change-btn"
     .order__box__card
       登録カード
       - if @card.present?

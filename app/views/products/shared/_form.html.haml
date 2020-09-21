@@ -120,13 +120,13 @@
         - if @product.errors.any?
           %span.err_message
             =  @product.errors.full_messages_for(:price).shift
-        .namebox
+        .productprice
           .pricetitle
             (¥100 〜 ¥9,999,999)
           .pricebox
             .priceTag
               ¥
-            = f.number_field :price, placeholder: "税込み価格(半角数字のみ)", min: "100", max: "9999999", class: "nmform"
+            = f.number_field :price, placeholder: "税込み価格(半角数字のみ)", min: "100", max: "9999999", class: "priceform"
         - if @product.id.nil?
           = f.submit "出品する", title: "商品を出品する", class: 'btn-default btn-sns'
         - elsif user_signed_in? && current_user.admin

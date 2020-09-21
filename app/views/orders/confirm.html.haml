@@ -26,7 +26,7 @@
         -# .confirmation__box__body__text
         -#   = "オーダー番号 : #{@order.id}"
         .order__box__body__text
-          = "#{detail.product.name}  × #{detail.quantity} = ¥#{(detail.product.price*detail.quantity).to_s(:delimited, delimiter: ',')}"
+          = "#{detail.product.name}  × #{detail.quantity}：¥#{(detail.product.price*detail.quantity).to_s(:delimited, delimiter: ',')}"
       .order__box__body__text
         = "お支払い合計 : ¥#{(@order.price.to_s(:delimited, delimiter: ','))}"
     .showMain__content__topContent__itemBox__detail__btn

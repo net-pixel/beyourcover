@@ -7,8 +7,10 @@ class User < ApplicationRecord
 
   has_one :address, dependent: :destroy
   has_many :addresses , dependent: :destroy
+  has_many :cards, dependent: :destroy
+  has_many :carts, dependent: :destroy
+  has_many :cart_details, dependent: :destroy
   # accepts_nested_attributes_for :address //後から使用予定
-  # has_many :cards, dependent: :destroy //後から使用予定
   # has_many :buyed_products, foreign_key: "buyer_id", class_name: "Product"
   # has_many :saling_products, -> { where("buyer_id is NULL") }, foreign_key: "user_id", class_name: "Product"
   # has_many :sold_products, -> { where("buyer_id is not NULL") }, foreign_key: "user_id", class_name: "Product"

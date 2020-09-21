@@ -5,6 +5,10 @@ class CartsController < ApplicationController
 
   def show
     @cart_details = @cart.cart_details
+    if user_signed_in?
+      @user = User.find(current_user.id)
+      @address = Address.find(current_user.id)
+    end
   end
   
   def add_product

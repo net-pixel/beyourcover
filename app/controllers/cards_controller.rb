@@ -40,6 +40,7 @@ class CardsController < ApplicationController
     @exp_year = default_card_information.exp_year.to_s.slice(2,3)
     customer_card = customer.cards.retrieve(@card.card_id)
     @card_brand = customer_card.brand
+    @address = Address.find(current_user.id)
     case @card_brand
     when "Visa"
       @card_src = "https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?238737266"

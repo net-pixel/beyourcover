@@ -85,7 +85,6 @@ ActiveRecord::Schema.define(version: 2020_09_18_171424) do
     t.bigint "user_id"
     t.bigint "address_id"
     t.bigint "card_id"
-    t.bigint "product_id"
     t.integer "quantity", null: false
     t.integer "status", default: 0, null: false
     t.integer "price", null: false
@@ -93,7 +92,6 @@ ActiveRecord::Schema.define(version: 2020_09_18_171424) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["address_id"], name: "index_orders_on_address_id"
     t.index ["card_id"], name: "index_orders_on_card_id"
-    t.index ["product_id"], name: "index_orders_on_product_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -139,6 +137,5 @@ ActiveRecord::Schema.define(version: 2020_09_18_171424) do
   add_foreign_key "order_details", "products"
   add_foreign_key "orders", "addresses"
   add_foreign_key "orders", "cards"
-  add_foreign_key "orders", "products"
   add_foreign_key "orders", "users"
 end

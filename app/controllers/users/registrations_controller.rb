@@ -64,9 +64,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   
   def edit_address
+    @address = Address.find(current_user.id)
   end
-
+  
   def update_address
+    @address = Address.find(current_user.id)
     @address.update(address_params)
     flash[:notice] = '住所情報を更新しました'
     redirect_to new_order_path

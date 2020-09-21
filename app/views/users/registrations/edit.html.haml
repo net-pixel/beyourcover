@@ -59,6 +59,8 @@
         -# %p
         -#   Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
         = link_to "戻る", :back, class: 'btn-default btn-sns'
+        -# %p
+        -#   #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'cart-delete'}
     -# .field
     -#   = f.label :email
     -#   %br/
