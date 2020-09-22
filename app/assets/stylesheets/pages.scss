@@ -21,3 +21,29 @@
     }
   }
 }
+
+@media screen and (max-width:800px) {
+  .page {
+    &__head {
+      margin: 30px 0;
+      font-size: 1.3rem;
+    }
+    &__title {
+      margin: 10px 0;
+      font-size: .9rem;
+      &__line {
+        text-decoration:underline;
+        margin: 10px 0;
+        font-size: .8rem;
+      }
+    }
+    &__lead {
+      margin: 5px 0;
+      font-size: .8rem;
+      &__space {
+        margin-left: 10px;
+        font-size: .8rem;
+      }
+    }
+  }
+}
