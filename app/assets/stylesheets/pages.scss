@@ -1,0 +1,23 @@
+.page {
+  &__head {
+    margin: 40px 0;
+    font-size: 2rem;
+  }
+  &__title {
+    margin: 20px 0;
+    font-size: 1rem;
+    &__line {
+      text-decoration:underline;
+      margin: 20px 0;
+      font-size: 1rem;
+    }
+  }
+  &__lead {
+    margin: 5px 0;
+    font-size: 1rem;
+    &__space {
+      margin-left: 10px;
+      font-size: 1rem;
+    }
+  }
+}

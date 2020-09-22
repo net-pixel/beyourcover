@@ -16,13 +16,13 @@
         User Guide
       .guide
         .msg__text
-          =link_to 'プライバシーポリシー', root_path, class: 'msg__text__line'
-          =link_to 'よくあるご質問', root_path, class: 'msg__text__line'
-          =link_to '配送について', root_path, class: 'msg__text__line'
-          =link_to '返金・返品について', root_path, class: 'msg__text__line'
-          =link_to '利用契約', root_path, class: 'msg__text__line'
-          =link_to '特定商取引法に基づく記載', root_path, class: 'msg__text__line'
-          =link_to 'お問い合わせ', root_path, class: 'msg__text__line'
+          =link_to 'プライバシーポリシー', privacy_path, class: 'msg__text__line'
+          -# =link_to 'よくあるご質問', faq_path, class: 'msg__text__line'
+          =link_to '配送について', delivery_path, class: 'msg__text__line'
+          =link_to '返金・返品について', refund_path, class: 'msg__text__line'
+          =link_to '利用契約', terms_of_service_path, class: 'msg__text__line'
+          =link_to '特定商取引法に基づく記載', tokushoho_path, class: 'msg__text__line'
+          =link_to 'お問い合わせ', inquiry_path, class: 'msg__text__line'
 
 .footer
   .footer-bottom
