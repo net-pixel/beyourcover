@@ -6,7 +6,7 @@
   - if @cart_details.count == 0
     .checkout__empty
       No Items...
-    .backpage
+    .showMain__content__topContent__itemBox__detail__btn
       %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'}
   - else
     - @cart_details.each do |cart_detail|
