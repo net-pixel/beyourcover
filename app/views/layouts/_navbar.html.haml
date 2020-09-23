@@ -25,7 +25,7 @@
                 - if current_user
                   .mainnav
                     %li= link_to "home", root_path, class: 'select'
-                    %li= link_to "about", "#", class: 'select'
+                    %li= link_to "about", about_path, class: 'select'
                     %li
                       %a#subnav.select.drop
                         = current_user.name
@@ -46,7 +46,7 @@
                 - else
                   .mainnav
                     %li= link_to "home", root_path, class: 'select'
-                    %li= link_to "about", "#", class: 'select'
+                    %li= link_to "about", about_path, class: 'select'
                     %li.nav-item
                       = link_to "Signup", new_user_registration_path, class:'select'
                     %li.nav-item

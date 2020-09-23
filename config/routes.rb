@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'pages/about'
   devise_for :users, controllers: {
     registrations: "users/registrations", sessions: "users/sessions" }
   root "products#index"
@@ -41,5 +42,14 @@ Rails.application.routes.draw do
   resources :order_details, only: :index
 
   resources :cart_details
+
+  get 'about', to: 'pages#about'
+  get 'privacy', to: 'pages#privacy'
+  get 'faq', to: 'pages#faq'
+  get 'delivery', to: 'pages#delivery'
+  get 'refund', to: 'pages#refund'
+  get 'terms_of_service', to: 'pages#terms_of_service'
+  get 'tokushoho', to: 'pages#tokushoho'
+  get 'inquiry', to: 'pages#inquiry'
 
 end
