@@ -31,6 +31,8 @@
                   = p.name
                 .product__price
                   = "#{p.price.to_s(:delimited, delimiter: ',')}円"
+                  %br
+                  %span (税込・送料込)
               = link_to 'Edit', edit_product_path(p), class: "no-stock__admin"
               = link_to 'Destroy', p, method: :delete, data: { confirm: 'Are you sure?' }, class: "no-stock__admin"
     - else
@@ -47,5 +49,7 @@
                   = p.name
                 .product__price
                   = "#{p.price.to_s(:delimited, delimiter: ',')}円"
+                  %br
+                  %span (税込・送料込)
     .button
       %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'}

@@ -46,8 +46,12 @@
               = "数量：#{cart_detail.quantity}"
             .order__box__product__detail__text__line
               = "小計：¥#{cart_detail.total_price.to_s(:delimited, delimiter: ',')}"
+            .order__box__product__detail__text__line
+              %span (税込・送料込)
     .order__box__total
       = "合計 : ¥#{(@cart.total_price.to_s(:delimited, delimiter: ','))}"
+      .order__box__total__detail
+        %span (税込・送料込)
     .showMain__content__topContent__itemBox__detail__btn
       - if @card.present? && @address.present?
         = button_to "購入する", orders_path, class: "showMain__content__topContent__itemBox__detail__btn__purchaseBtn", params: {user_id: current_user.id, address_id: @address.id, card_id: @card.id, price: @cart.total_price, quantity: @cart.total_number}
