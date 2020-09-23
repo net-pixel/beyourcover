@@ -16,7 +16,12 @@
         %p 検索キーワードを入力してください
     - elsif @products.present?
       %p
-        = "「#{params[:q][:name_or_brand_cont]}」の検索結果: #{@search.result.count}個"
+        = "「#{params[:q][:name_or_brand_cont]}」の検索結果"
+      -# %p
+      -#   = "「#{params[:q][:name_or_brand_cont]}」の検索結果: #{@search.result.count}個"
+      -# .products
+      -#   .products__comment
+      -#     （ストックがない商品は個数にカウントされても表示されません）
       .products
         - @products.each do |p|
           - if p.stock == 0
@@ -32,5 +37,6 @@
                   = "#{p.price.to_s(:delimited, delimiter: ',')}円"
     - else
       .prodicts
-        %p= "「#{params[:q][:name_or_brand_cont]}」の検索結果: #{@search.result.count}個"
+        -# %p= "「#{params[:q][:name_or_brand_cont]}」の検索結果: #{@search.result.count}個"
+        %p= "「#{params[:q][:name_or_brand_cont]}」の検索結果"
         %p 該当する記事はありませんでした
