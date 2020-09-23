@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  helper_method :is_admin!
   before_action :basic_auth, if: :production?
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -26,4 +27,11 @@ class ApplicationController < ActionController::Base
     session[:cart_id] = current_cart.id
     current_cart
   end
+
+  def is_admin!
+    if current_user && current_user.admin
+    else
+        redirect_to root_path
+    end
+end
 end

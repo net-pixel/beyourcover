@@ -51,5 +51,7 @@ Rails.application.routes.draw do
   get 'terms_of_service', to: 'pages#terms_of_service'
   get 'tokushoho', to: 'pages#tokushoho'
   get 'inquiry', to: 'pages#inquiry'
+  get 'search', to: 'pages#search'
+  get 'search_result', to: 'pages#search_result'
 
 end
