@@ -1,5 +1,3 @@
-= render 'layouts/navbar'
-.space
 .container
   .row
     .search-bar
@@ -12,7 +10,7 @@
             .search-btn__end
               %span
     - if params[:q][:name_or_brand_cont] == ""
-      .products
+      .search-bar__blank
         %p 検索キーワードを入力してください
     - elsif @products.present?
       %p
@@ -36,7 +34,7 @@
                 .product__price
                   = "#{p.price.to_s(:delimited, delimiter: ',')}円"
     - else
-      .prodicts
+      .search-bar__blank
         -# %p= "「#{params[:q][:name_or_brand_cont]}」の検索結果: #{@search.result.count}個"
         %p= "「#{params[:q][:name_or_brand_cont]}」の検索結果"
         %p 該当する記事はありませんでした
