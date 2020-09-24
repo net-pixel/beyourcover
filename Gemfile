@@ -65,4 +65,5 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'payjp'
 gem 'gon'
+gem 'ransack'
 # CustomGem End

@@ -1,4 +1,4 @@
-.order
+.order.confirmbg
   .order__box
     .order__box__title
       Thank you for choosing BeYourCover
@@ -29,5 +29,6 @@
           = "#{detail.product.name}  × #{detail.quantity}：¥#{(detail.product.price*detail.quantity).to_s(:delimited, delimiter: ',')}"
       .order__box__body__text
         = "お支払い合計 : ¥#{(@order.price.to_s(:delimited, delimiter: ','))}"
+        %span (税込・送料込)
     .showMain__content__topContent__itemBox__detail__btn
       = link_to "トップページへ戻る",root_path, data: {"turbolinks"=>false}, class: "showMain__content__topContent__itemBox__detail__btn__purchaseBtn"

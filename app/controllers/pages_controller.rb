@@ -8,6 +8,16 @@ class PagesController < ApplicationController
     end
   end
 
+  def search
+    @search = Product.ransack(params[:q])
+    @products = @search.result
+  end
+
+  def search_result
+    @search = Product.ransack(params[:q])
+    @products = @search.result
+  end
+
   def privacy
     if user_signed_in?
       @user = User.find(current_user.id)

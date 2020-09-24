@@ -6,7 +6,7 @@
   - if @cart_details.count == 0
     .checkout__empty
       No Items...
-    .backpage
+    .showMain__content__topContent__itemBox__detail__btn
       %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'}
   - else
     - @cart_details.each do |cart_detail|
@@ -38,6 +38,10 @@
             %p
               小計：
               = "¥#{cart_detail.total_price.to_s(:delimited, delimiter: ',')}"
+              %span (税込)
+              %br
+              %span 送料
+              = cart_detail.product.postage
             = button_to '削除', cart_detail_path(cart_detail), method: :delete, data: { confirm: '削除しますか?' }, class: "cart-delete"
     .checkout__total
       = "合計 : ¥#{(@cart.total_price.to_s(:delimited, delimiter: ','))}"

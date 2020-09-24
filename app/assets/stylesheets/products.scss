@@ -95,6 +95,10 @@
 			align-items: center;
 		}
 	}
+	&__comment {
+		font-size: .7rem;
+		margin-bottom: 10px;
+	}
 	.product {
 		margin-bottom: 2rem;
 		transition: 0.6s;
