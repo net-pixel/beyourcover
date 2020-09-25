@@ -22,6 +22,16 @@
   }
 }
 
+.about {
+  height: 100vh;
+  &__head {
+    margin: 40px 0;
+    font-size: 2rem;
+  }
+  &__body {
+  }
+}
+
 @media screen and (max-width:800px) {
   .page {
     &__head {
