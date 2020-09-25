@@ -1,5 +1,5 @@
 #アプリケーションコードのあるディレクトリを変数に入れる
-app_path = File.expand_path('../../../', __FILE__)
+app_path = File.expand_path('../../', __FILE__)
 
 #アプリケーションサーバの性能を指定(workerの数です。数字を増やすとレスポンスが早くなります)
 worker_processes 1
