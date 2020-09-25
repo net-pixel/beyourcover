@@ -23,9 +23,9 @@ test:
   <<: *default
   database: beyourcover_test
 
-  production:
-    <<: *default
-    database: beyourcover_production
-    username: root
-    password: <%= ENV['DATABASE_PASSWORD'] %>
-    socket: /var/lib/mysql/mysql.sock
+production:
+  <<: *default
+  database: beyourcover_production
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
