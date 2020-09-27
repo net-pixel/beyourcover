@@ -15,7 +15,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create_user
-    @user = User.new(sign_up_params)
+    @user = User.create(sign_up_params)
     @address = Address.new
     resource.update(confirmed_at: Time .now.utc)
     if @user.valid?
@@ -49,11 +49,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create_address
-    @user = User.new(session["devise.regist_data"]["user"])
+    @user = User.create(session["devise.regist_data"]["user"])
     @address = Address.new(address_params)
     if @address.valid?
       @user.save
-      @address = Address.new(address_params.merge(user_id: @user.id))
+      @address = Address.create(address_params.merge(user_id: @user.id))
       @address.save
       session["devise.regist_data"]["user"].clear
       sign_in(:user, @user)
