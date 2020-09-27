@@ -17,6 +17,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create_user
     @user = User.new(sign_up_params)
     @address = Address.new
+    resource.update(confirmed_at: Time .now.utc)
     if @user.valid?
       session["devise.regist_data"] = { user: @user.attributes }
       session["devise.regist_data"][:user]["password"] = params[:user][:password]
