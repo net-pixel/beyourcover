@@ -1,10 +1,18 @@
-%h2 Resend confirmation instructions
-= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
-  = render "users/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
-  .actions
-    = f.submit "Resend confirmation instructions"
-= render "users/shared/links"
+.reconfirmation
+  .user-form
+    .user-form__field
+      %h2.body_head 承認メール再送信
+      = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+        = render "users/shared/error_messages", resource: resource
+        .user-form__field__box
+          .user-form__field__box__group
+            .user-form__field__box__group__head
+              %label
+                メールアドレス
+            %br/
+            = f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "user-form__field__box__group__form"
+          .actions
+            = f.submit "送信する", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'
+      -# = render "users/shared/links"
+      .showMain__content__topContent__itemBox__detail__btn
+        %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'}

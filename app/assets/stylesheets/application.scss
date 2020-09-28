@@ -136,6 +136,18 @@ footer {
   }
 }
 
+.sendmail {
+  margin: 5px;
+  color: black;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.reconfirmation {
+  height: 100vh;
+}
+
 @media screen and (max-width:800px) {
   .button {
     padding: 0 20px;

@@ -13,5 +13,5 @@
       = "有効期限：" + @exp_month + " / " + @exp_year
       .order__box__card__text__btn
         = button_to "削除する", card_path(@card.id), {method: :delete, id: 'charge-form', name: "inputForm", class: "change-btn"}
-  .showMain__content__topContent__itemBox__detail__btn        
+  .showMain__content__topContent__itemBox__detail__btn
     %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'}
