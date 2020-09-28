@@ -56,7 +56,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @address = Address.create(address_params.merge(user_id: @user.id))
       @address.save
       session["devise.regist_data"]["user"].clear
-      sign_in(:user, @user)
+      # sign_in(:user, @user)
+      bypass_sign_in(current_user)
       redirect_to root_path
     else
       render :new_address

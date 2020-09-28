@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'pages/about'
   devise_for :users, controllers: {
-    registrations: "users/registrations", sessions: "users/sessions" }
+    registrations: "users/registrations", sessions: "users/sessions", confirmations: "users/confirmations" }
   root "products#index"
   devise_scope :user do
     get "new_user", to: "users/registrations#new_user"
