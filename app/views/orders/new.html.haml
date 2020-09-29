@@ -56,7 +56,6 @@
       - if @card.present? && @address.present?
         = button_to "購入する", orders_path, class: "showMain__content__topContent__itemBox__detail__btn__purchaseBtn", params: {user_id: current_user.id, address_id: @address.id, card_id: @card.id, price: @cart.total_price, quantity: @cart.total_number}
       - else
-        .showMain__content__topContent__itemBox__detail__btn__purchaseBtn
-          ※ 購入には送付先住所・カード情報の登録が必要です
+        %span ※ 購入には送付先住所・カード情報の登録が必要です
   .showMain__content__topContent__itemBox__detail__btn
     %input{onclick: "history.back()", type: "button", value: "前のページへ戻る", class: 'showMain__content__topContent__itemBox__detail__btn__purchaseBtn'}
