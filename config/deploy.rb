@@ -29,7 +29,8 @@ set :keep_releases, 5
 set :pty, true
 
 #credentials.yml.encの読み込み
-set :linked_files, %w{ config/credentials.yml.enc }
+# set :linked_files, %w{ config/credentials.yml.enc }
+set :linked_files, fetch(:linked_files, []).push("config/master.key")
 
 # デプロイ処理が終わった後、Unicornを再起動するための記述
 after 'deploy:publishing', 'deploy:restart'
