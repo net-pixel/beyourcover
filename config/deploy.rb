@@ -28,8 +28,7 @@ set :keep_releases, 5
 #アセットコンパイルバグ
 set :pty, true
 
-#credentials.yml.encの読み込み
-# set :linked_files, %w{ config/credentials.yml.enc }
+#shared/config/master.keyの読み込み
 set :linked_files, fetch(:linked_files, []).push("config/master.key")
 
 # デプロイ処理が終わった後、Unicornを再起動するための記述
