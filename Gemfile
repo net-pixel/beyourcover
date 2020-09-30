@@ -80,4 +80,5 @@ gem 'mini_magick'
 gem 'payjp'
 gem 'gon'
 gem 'ransack'
+gem 'fog-aws'
 # CustomGem End
