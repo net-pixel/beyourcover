@@ -8,7 +8,7 @@ email: “test@example.com”
 password: ‘password’
 
 # サイトURL
-- アドレス: http://175.41.196.102/
+- アドレス: https://beyourcover.com/
 
 # 実装内容
 ## マークアップ
