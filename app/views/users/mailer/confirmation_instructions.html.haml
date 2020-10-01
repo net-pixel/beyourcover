@@ -1,8 +1,8 @@
-//登録／変更かを「unconfirmed_email」の有無で切り分けてメール送信させます。
 %p
-  ="#{@resource.name}さん"   #　これは私が独自に追加した項目です
+  ="#{@resource.name}さん"
   %br
-  BeYourCoverをご利用いただきありがとうございます。
+  %br
+  この度は、BeYourCoverをご利用いただきありがとうございます。
   %br
 - if @resource.try(:unconfirmed_email?)  #true→email変更 false→会員登録
   %p
@@ -16,19 +16,22 @@
     このURLの有効期限は24時間です。
 -else
   %br
-  会員登録が完了しました。
+  会員登録が完了しましたのでお知らせいたします。
+  引き続きお買い物をお楽しみください。
 %br
 %br
 %p
-  Webページを開く
+  アドレスはこちら
   %br
-    https://beyourcover.com
+  = link_to 'https://beyourcover.com', 'https://beyourcover.com'
   %br
-  ※このメールは返信しても届きません。お問い合わせはアプリを起動して「お問い合わせ」からお願いいたします。
   %br
+  --------------------------------------
   %br
   ■ご登録の覚えがないのにこのメールが届いたという方
   %br
   ご迷惑をおかけし申し訳ありません。大変お手数ですが下記メールアドレスまでご連絡をお願いいたします。
   %br
-  craftclwd@gmail.com
+  アドレス：craftclwd@gmail.com
+  %br
+  Copyright © BeYourCover
