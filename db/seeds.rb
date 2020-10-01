@@ -7,19 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create!(
-  name: "admin",
+  name: "アドミン",
   email: "abc@example.com",
   password: 'password',
   password_confirmation: "password",
-  last_name: "admin",
-  first_name: "admin",
+  last_name: "アドミン",
+  first_name: "アドミン",
   last_kana: "アドミン",
   first_kana: "アドミン",
   admin: true
 )
 Address.create!(
-  destination_last: "admin",
-  destination_first: "admin",
+  destination_last: "アドミン",
+  destination_first: "アドミン",
   destination_last_kana: "アドミン",
   destination_first_kana: "アドミン",
   post_code: "001-0000",
@@ -31,7 +31,7 @@ Address.create!(
   user_id: 1,
 )
 User.create!(
-  name: "test",
+  name: "テスト",
   email: "test@example.com",
   password: 'password',
   password_confirmation: "password",

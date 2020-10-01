@@ -57,7 +57,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @address.save
       session["devise.regist_data"]["user"].clear
       sign_in(:user, @user)
-      redirect_to root_path
+      # redirect_to root_path
     else
       render :new_address
       return

@@ -2,7 +2,7 @@
   ="#{@resource.name}さん"
   %br
   %br
-  この度は、BeYourCoverをご利用いただきありがとうございます。
+  %p この度は、BeYourCoverをご利用いただきありがとうございます。
   %br
 - if @resource.try(:unconfirmed_email?)  #true→email変更 false→会員登録
   %p
@@ -25,13 +25,12 @@
   %br
   = link_to 'https://beyourcover.com', 'https://beyourcover.com'
   %br
+  %p --------------------------------------
   %br
-  --------------------------------------
+  %p ■ご登録の覚えがないのにこのメールが届いたという方
   %br
-  ■ご登録の覚えがないのにこのメールが届いたという方
+  %p ご迷惑をおかけし申し訳ありません。大変お手数ですが下記メールアドレスまでご連絡をお願いいたします。
   %br
-  ご迷惑をおかけし申し訳ありません。大変お手数ですが下記メールアドレスまでご連絡をお願いいたします。
+  %p アドレス：craftclwd@gmail.com
   %br
-  アドレス：craftclwd@gmail.com
-  %br
-  Copyright © BeYourCover
+  %p Copyright © BeYourCover

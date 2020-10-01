@@ -1,16 +1,19 @@
-  = render 'layouts/navbar'
+= render 'layouts/navbar'
 .space
   .user-form
     .user-form__head
       %li.user-form__head__progress.progress-active.progress-active__bar
         会員情報
       %li.user-form__head__progress.progress-active.progress-active__bar
-        住所・電話番号
+        住所・TEL
       %li.user-form__head__progress__done.progress-active
         完了
-    .user-form__field
-      %h2 登録が完了いたしました。
-      %p 登録いただいたメールアドレスに完了通知メールを送付いたしましたのでご確認ください。
-      %p それでは、ログインしてお買い物をお楽しみください。
-      ..user-form__field__box
-        = link_to 'トップページへ戻る', root_path, class: 'btn-default btn-sns'
+  .user-form
+    %h2 登録が完了いたしました。
+    %br
+    %br
+    %p 登録いただいたメールアドレスに完了通知メールを送付いたしましたのでご確認ください。
+    %br
+    %p それでは、ログインしてお買い物をお楽しみください。
+  .showMain__content__topContent__itemBox__detail__btn
+    = link_to "ホームへ戻る", root_path, class: "showMain__content__topContent__itemBox__detail__btn__purchaseBtn"
