@@ -1,14 +1,16 @@
 class NotificationMailer < ApplicationMailer
-  helper :application
+  # helper :application
+  default from: 'craftclwd@gmail.com'
   def send_order_confirm(user)
     @user = user
-    @cart_details = Order.find_by(user_id: current_user.id)
-    @address = Address.find_by(user_id: current_user.id)
+    @order = Order.order(created_at: :desc).find_by(user_id: @user.id)
+    @order_detail = OrderDetail.find_by(order_id: @order.id)
+    @address = Address.find_by(user_id: @user.id)
     mail(
       subject: "【BeYourCover】商品購入ありがとうございます。",
       to: @user.email #宛先
     ) do |format|
-      format.text
+      format.html
     end
   end
 end
