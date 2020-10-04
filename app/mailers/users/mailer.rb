@@ -10,7 +10,6 @@ class Users::Mailer < Devise::Mailer
       # else
       opts[:subject] = "【BeYourCover】会員登録完了"
     # end
-    #件名の指定以外は親を継承
     super
   end
 end

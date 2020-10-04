@@ -57,7 +57,8 @@ class OrdersController < ApplicationController
 
     if @purchaseByCard.save && @order.save!
       OrderDetail.adjustStock_createDetail(@order, @cart.cart_details)
-      flash[:notice] = '注文が完了しました。マイページにて注文履歴の確認ができます。'
+      # flash[:notice] = '注文が完了しました。マイページにて注文履歴の確認ができます。' #注文履歴作成予定
+      flash[:notice] = '注文が完了しました。'
       redirect_to action: :confirm
     else
       flash[:alert] = "注文の登録ができませんでした"
