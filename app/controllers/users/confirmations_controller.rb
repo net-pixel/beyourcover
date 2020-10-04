@@ -8,6 +8,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
   # POST /resource/confirmation
   def create
+    current_user.update(email: current_user.unconfirmed_email)
   end
   
   # GET /resource/confirmation?confirmation_token=abcdef
@@ -28,14 +29,8 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
     #   self.resource = resource_class.confirm_by_token(params[:confirmation_token])
     #   redirect_to new_user_session_path, notice: 'メールアドレスを確認しました。'
     # end
-    # self.resource = resource_class.confirm_by_token(params[:confirmation_token])
-    # @newemail = resource.unconfirmed_email
-    # resource.update!(email: @newemail)
-    # resource.confirm
-    # redirect_to new_user_session_path, notice: 'メールアドレスを確認しました。'
-    # @newemail = current_user.unconfirmed_email
-    # current_user.update!(email: @newemail)
-    # current_user.update_without_password(email: @newemail)
+    self.resource = resource_class.confirm_by_token(params[:confirmation_token])
+    resource.confirm
   end
 
   protected

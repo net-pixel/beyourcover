@@ -36,7 +36,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
     @user = User.find(current_user.id)
     if current_user.update(user_params)
-      current_user.confirm
+      # current_user.confirm
       redirect_to root_path
     else
       return
