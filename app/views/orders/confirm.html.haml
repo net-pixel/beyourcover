@@ -30,5 +30,8 @@
       .order__box__body__text
         = "お支払い合計 : ¥#{(@order.price.to_s(:delimited, delimiter: ','))}"
         %span (税込・送料込)
+      %br
+      .order__box__body__text
+        ＊購入明細をご登録いただきましたメールアドレスにも記載しておりますのでご確認くださいませ。
     .showMain__content__topContent__itemBox__detail__btn
       = link_to "トップページへ戻る",root_path, data: {"turbolinks"=>false}, class: "showMain__content__topContent__itemBox__detail__btn__purchaseBtn"
