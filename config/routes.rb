@@ -45,7 +45,7 @@ Rails.application.routes.draw do
 
   get 'about', to: 'pages#about'
   get 'privacy', to: 'pages#privacy'
-  get 'faq', to: 'pages#faq'
+  # get 'faq', to: 'pages#faq'
   get 'delivery', to: 'pages#delivery'
   get 'refund', to: 'pages#refund'
   get 'terms_of_service', to: 'pages#terms_of_service'

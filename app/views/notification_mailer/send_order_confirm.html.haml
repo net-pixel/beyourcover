@@ -1,0 +1,48 @@
+%p
+  ="#{@user.name}さん"
+%br
+この度は、BeYourCoverをご利用いただきありがとうございます。
+%br
+商品の購入が完了しましたのでお知らせいたします。
+%br
+%br
+%br
+ご注文内容
+- @order.order_details.each do |detail|
+  %p
+    = "#{detail.product.name}  × #{detail.quantity}：¥#{(detail.product.price*detail.quantity).to_s(:delimited, delimiter: ',')}"
+%p
+  = "お支払い合計 : ¥#{(@order.price.to_s(:delimited, delimiter: ','))}"
+  %span (税込・送料込)
+%br
+%br
+お届け先
+%p
+  = "送り先氏名 : #{@address.destination_last + @address.destination_first}"
+%p
+  = "ふりがな : #{@address.destination_last_kana + @address.destination_first_kana}"
+%p
+  = "郵便番号 : #{@address.post_code}"
+- if @address.building.present?
+  %p
+    = "住所 : #{@address.prefecture.name + @address.city + @address.address + @address.building}"
+- else
+  %p
+    = "住所 : #{@address.prefecture.name + @address.city + @address.address}"
+%br
+今後ともよろしくお願いいたします。
+%br
+%br
+%p --------------------------------------
+%br
+サイトURL
+%br
+= link_to 'https://beyourcover.com', 'https://beyourcover.com'
+%br
+■ご登録の覚えがないのにこのメールが届いたという方
+%br
+ご迷惑をおかけし申し訳ありません。大変お手数ですが下記メールアドレスまでご連絡をお願いいたします。
+%br
+craftclwd@gmail.com
+%br
+Copyright © BeYourCover
