@@ -1,4 +1,4 @@
-= form_with model: @product do |f|
+= form_with model: @product, id: 'product_form' do |f|
   - if @product.errors.any?
     %span.err_message
       = I18n.t("errors.messages.not_saved")
@@ -58,7 +58,7 @@
         - if @product.errors.any?
           %span.err_message
             =  @product.errors.full_messages_for(:detail).shift
-        = f.text_field :detail, id: :count_area, class: "user-form__field__box__group__detail", placeholder: "1000文字まで", maxlength: "1000"
+        = f.text_area :detail, id: :count_area, class: "user-form__field__box__group__detail", placeholder: "1000文字まで", maxlength: "1000"
         .count_box
           %span.up_counter 0
           \/ 1000文字

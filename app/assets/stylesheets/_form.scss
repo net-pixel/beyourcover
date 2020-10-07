@@ -1,8 +1,11 @@
 .err_message {
   color: #CC3300;
 }
+#product_form {
+  max-width: 750px;
+  margin: 0 auto;
+}
 .user-form {
-  padding: 100px;
   margin: auto;
   font-size: 14px;
   color: rgb(51, 51, 51);
@@ -125,7 +128,6 @@
         &__detail {
           border-radius: 4px;
           display: block;
-          line-height: 150px;
           font-size: 14px;
           width: 100%;
           border: 1px solid;
@@ -133,6 +135,7 @@
           position: relative;
           padding: 0 10px;
           height: 150px;
+          white-space: pre-wrap;
         }
       }
 
@@ -284,6 +287,10 @@ input.btn {
   .user-form{
     padding: 100px 30px 30px 30px;
   }
+  .box-field {
+    position: absolute;
+    width: 100% !important;
+  }
 }
 
 #children_box{
@@ -298,6 +305,7 @@ input.btn {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  width: 100%;
   .box-field {
     border-radius: 3px;
     width: 100%;

@@ -22,8 +22,6 @@
                 %span 送料
                 = @product.postage
             .showMain__content__topContent__itemBox__detail__itemDetail
-              = @product.detail
-            .showMain__content__topContent__itemBox__detail__itemDetail
               カテゴリー：
               %span
               = @product.category.name
@@ -32,8 +30,12 @@
               %span
               = @product.brand
             .showMain__content__topContent__itemBox__detail__itemDetail
+              商品説明：
+              %br
+              = safe_join(@product.detail.split("\n"),tag(:br))
+            .showMain__content__topContent__itemBox__detail__itemDetail
               - if @product.stock > 0
-                Available
+                状況：Available
                 -# 在庫：
                 -# = @product.stock
               - else
