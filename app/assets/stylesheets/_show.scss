@@ -171,14 +171,20 @@
 }
 
 @media screen and (max-width:800px) {
-  .showMain__content__topContent__itemBox {
-    flex-direction: column;
-    &__body {
-      margin: 0;
+  .showMain__content__topContent {
+    &__name {
+      font-size: 1.3rem;
     }
-    &__detail {
-      &__itemDetail {
-        margin: 10px;
+    &__itemBox {
+      flex-direction: column;
+      &__body {
+        margin: 0;
+      }
+      &__detail {
+        &__itemDetail {
+          font-size: 1rem;
+          margin: 10px;
+        }
       }
     }
   }
