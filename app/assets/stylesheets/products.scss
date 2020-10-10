@@ -145,3 +145,14 @@
 		12px 12px 12px 0 rgba(0,0,0,.3);
 	}
 }
+
+@media screen and (max-width:800px) {
+	.product {
+		&__title {
+			font-size: .9rem;
+		}
+		&__price {
+			font-size: .8rem;
+		}
+	}
+}
