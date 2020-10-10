@@ -108,12 +108,10 @@
 			transform: scale(1.1);
 		}
 		&__title {
-			margin-left: 30px;
 			text-decoration: none;
 			color: black;
 		}
 		&__price {
-			margin-left: 30px;
 			text-decoration: none;
 			color: black;
 		}
@@ -149,7 +147,7 @@
 @media screen and (max-width:800px) {
 	.product {
 		&__title {
-			font-size: .9rem;
+			font-size: .7rem;
 		}
 		&__price {
 			font-size: .8rem;
