@@ -25,10 +25,12 @@
               カテゴリー：
               %span
               = @product.category.name
-            .showMain__content__topContent__itemBox__detail__itemDetail
-              ブランド：
-              %span
-              = @product.brand
+            - if @product.brand == ""
+            - else
+              .showMain__content__topContent__itemBox__detail__itemDetail
+                ブランド：
+                %span
+                = @product.brand
             .showMain__content__topContent__itemBox__detail__itemDetail
               商品説明：
               %br
