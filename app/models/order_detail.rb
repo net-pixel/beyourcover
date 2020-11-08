@@ -4,14 +4,14 @@ class OrderDetail < ApplicationRecord
 
 
   def self.adjustStock_createDetail(order, cart_details)
-    cart_details.target.each do |cart_detail|
+    cart_details.each do |cart_detail|
       OrderDetail.create!(
         order_id: order.id, product_id: cart_detail[:product_id], quantity: cart_detail[:quantity]
       )
-      @product = Product.find_by(id: cart_detail[:product_id])
-      @product.with_lock do
-        @product.update(stock: (@product.stock - cart_detail[:quantity]))
-      end
+      @product = Product.lock.find_by(id: cart_detail[:product_id])
+      #プロダクトテーブルのストックとカートの製品数を比較しないといけない
+      
+      @product.update!(stock: (@product.stock - cart_detail[:quantity]))
       CartDetail.find(cart_detail[:id]).delete
     end
   end

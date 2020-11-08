@@ -5,6 +5,6 @@ class Order < ApplicationRecord
   belongs_to :card
   belongs_to :address
 
-  enum status: {支払済み: 0, 配送準備中: 1, 配送済み: 2}
+  # enum status: {支払済み: 0, 配送準備中: 1, 配送済み: 2}
 
 end

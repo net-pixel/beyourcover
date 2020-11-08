@@ -15,5 +15,5 @@ class Product < ApplicationRecord
   validates :category_id, presence: { message: "を選択してください" }
   validates :postage, presence: { message: "を選択してください" }
   validates :price, presence: { message: "を入力してください" }
-  validates :stock, presence: { message: "を入力してください" }
+  validates :stock, presence: { message: "を入力してください" }, numericality: {only_integer: true, greater_than_or_equal_to: 0}
 end

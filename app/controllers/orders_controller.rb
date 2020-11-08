@@ -47,21 +47,32 @@ class OrdersController < ApplicationController
       redirect_to cart_path(@current_cart), notice: "ログインしてください"
       return
     end
+
+    ActiveRecord::Base.transaction do
+      @order = Order.new(order_params)
+      @order.save!
+      # raise "エラーがおきました"
+      OrderDetail.adjustStock_createDetail(@order, @cart.cart_details)
+    rescue
+      flash[:notice] = '注文の登録ができませんでした。再度お試し下さい'
+      redirect_to root_path
+      return
+    end
+
     @purchaseByCard = Payjp::Charge.create(
     amount: @cart.total_price,
     customer: @card.customer_id,
     currency: 'jpy',
     card: params['payjpToken']
     )
-    @order = Order.new(order_params)
 
-    if @purchaseByCard.save && @order.save!
-      OrderDetail.adjustStock_createDetail(@order, @cart.cart_details)
+    if @purchaseByCard.save
       NotificationMailer.send_order_confirm(@user).deliver
       # flash[:notice] = '注文が完了しました。マイページにて注文履歴の確認ができます。' #注文履歴作成予定
       flash[:notice] = '注文が完了しました。'
       redirect_to action: :confirm
     else
+
       flash[:alert] = "注文の登録ができませんでした"
       redirect_to action: :new
     end
