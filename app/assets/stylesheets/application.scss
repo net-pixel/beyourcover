@@ -57,7 +57,12 @@ font-family: var(--M-PLUS-1-p);
 }
 
 footer {
-  // margin-top: 30px;
+  .footer-card {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .footer-bottom {
     padding: 30px;
     display: flex;
@@ -148,9 +153,38 @@ footer {
   height: 100vh;
 }
 
+.notification {
+  color: white;
+  text-align: center;  
+
+  .notice {
+    background-color: white;
+    color: black;
+    z-index: 2;
+    font-size: .9rem;
+  }
+
+  .alert {
+    background-color: red;
+    padding: 0;
+    margin-bottom: 0;
+    border: none;
+    border-radius: 0;
+    z-index: 2;
+    font-size: .9rem;
+  }
+}
+
 @media screen and (max-width:800px) {
   .button {
     padding: 0 20px;
-
+  }
+  .notification {
+    .notice {
+      font-size: .7rem;
+    }
+    .alert {
+      font-size: .7rem;
+    }
   }
 }

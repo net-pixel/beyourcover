@@ -23,7 +23,20 @@
           =link_to '利用規約', terms_of_service_path, class: 'msg__text__line'
           =link_to '特定商取引法に基づく記載', tokushoho_path, class: 'msg__text__line'
           =link_to 'お問い合わせ', 'https://docs.google.com/forms/d/e/1FAIpQLSeqsbPCALipBsSX2wT9S1FpqyTcloNH6iJEopuPtMHdpqXyPw/viewform', class: 'msg__text__line', target: '_blank'
-
 .footer
+  .footer-card
+    .card__box__body__image
+      %li
+        = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?238737266', class: 'card__box__body__image__visa'
+      %li
+        = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?238737266', class: 'card__box__body__image__masterCard'
+      %li
+        = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?238737266', class: 'card__box__body__image__jcb'
+      %li
+        = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?238737266', class: 'card__box__body__image__americanExpress'
+      %li
+        = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?238737266', class: 'card__box__body__image__dinersclub'
+      %li
+        = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?238737266', class: 'card__box__body__image__discover'
   .footer-bottom
     Copyright © BeYourCover 2020

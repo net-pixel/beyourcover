@@ -54,7 +54,7 @@ class OrdersController < ApplicationController
       # raise "エラーがおきました"
       OrderDetail.adjustStock_createDetail(@order, @cart.cart_details)
     rescue
-      flash[:notice] = '注文の登録ができませんでした。再度お試し下さい'
+      flash[:alert] = '発注数量確認の上、再度お試し下さい。'
       redirect_to root_path
       return
     end
@@ -73,7 +73,7 @@ class OrdersController < ApplicationController
       redirect_to action: :confirm
     else
 
-      flash[:alert] = "注文の登録ができませんでした"
+      flash[:alert] = "注文の登録ができませんでした。"
       redirect_to action: :new
     end
   end
