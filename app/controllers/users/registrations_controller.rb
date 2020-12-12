@@ -15,9 +15,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create_user
-    @user = User.create(sign_up_params)
+    @user = User.new(sign_up_params)
     @address = Address.new
-    resource.update(confirmed_at: Time .now.utc)
     if @user.valid?
       session["devise.regist_data"] = { user: @user.attributes }
       session["devise.regist_data"][:user]["password"] = params[:user][:password]
@@ -28,7 +27,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new_user
     end
   end
-
+  
   def edit
     @user = User.find(current_user.id)
   end
@@ -42,19 +41,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
       return
     end
   end
-
+  
   def new_address
     @user = User.new(session["devise.regist_data"]["user"])
     @address = Address.new
   end
-
+  
+  #create = new + save
   def create_address
-    @user = User.create(session["devise.regist_data"]["user"])
+    @user = User.new(session["devise.regist_data"]["user"])
     @address = Address.new(address_params)
+    @address.user = @user
     if @address.valid?
-      @user.save
-      @address = Address.create(address_params.merge(user_id: @user.id))
-      @address.save
+      @address.save #ユーザー情報も登録@user.saveと同義
+      @user.confirm #confirmメソッドで# resource.update(confirmed_at: Time .now.utc)と同義
       session["devise.regist_data"]["user"].clear
       sign_in(:user, @user)
       # redirect_to root_path
