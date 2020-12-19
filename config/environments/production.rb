@@ -113,6 +113,9 @@ Rails.application.configure do
   # Rails.application.routes.default_url_options[:host] = host
   # config.action_mailer.default_url_options = { host: "samplehost"}
 
+  #google analytics
+  GA.tracker = "G-NPDHJ7K2P5"
+
   #URL生成用
   config.action_mailer.default_url_options = {  :host => 'https://beyourcover.com' }
   #届かない場合に送信元に連絡

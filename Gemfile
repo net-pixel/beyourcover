@@ -81,4 +81,5 @@ gem 'payjp'
 gem 'gon'
 gem 'ransack'
 gem 'fog-aws'
+gem 'google-analytics-rails'
 # CustomGem End
